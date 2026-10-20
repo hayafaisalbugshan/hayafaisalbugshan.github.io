@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Haya Bugshan — هيا بغشان</title>
+<meta name="description" content="Haya Bugshan's personal website. Computational Neuroscience and Applied Mathematics at Brown University: pupillometry foundation models, EEG, clinical ML, and LLM accountability.">
+<meta name="theme-color" content="#DBE3D6">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 3 L61 32 L32 61 L3 32 Z' fill='%23A9B8A0' stroke='%234A5638' stroke-width='3'/%3E%3Cpath d='M32 16C33 27 37 31 48 32C37 33 33 37 32 48C31 37 27 33 16 32C27 31 31 27 32 16Z' fill='%23A0553B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:  #DBE3D6;   /* pale sage, same as Tarjama */
+    --note:   #E7ECE3;
+    --ink:    #2F342B;
+    --muted:  #56604A;
+    --head:   #4A5638;
+    --band:   #4A5638;   /* ticker band */
+    --band-ink:#EEF2EA;
+    --sage:   #A9B8A0;
+    --link:   #A0553B;   /* terracotta */
+    --wheat:  #D9C7A3;
+    --rule:   #BCC6B4;
+    --serif: 'Newsreader', 'Iowan Old Style', Georgia, serif;
+    --ruqaa: 'Aref Ruqaa', 'Geeza Pro', serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:#252A21; --note:#2E3429; --ink:#E4E9DF; --muted:#AEB9A6; --head:#C3D0B8;
+      --band:#38412F; --band-ink:#E4E9DF; --sage:#7C8768; --link:#E09677; --wheat:#D9C7A3; --rule:#3D4536;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:#252A21; --note:#2E3429; --ink:#E4E9DF; --muted:#AEB9A6; --head:#C3D0B8;
+    --band:#38412F; --band-ink:#E4E9DF; --sage:#7C8768; --link:#E09677; --wheat:#D9C7A3; --rule:#3D4536;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--serif); font-size: 1.15rem; line-height: 1.62;
+    font-optical-sizing: auto; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: .18em; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 2px solid var(--link); outline-offset: 3px; border-radius: 2px; }
+  ::selection { background: var(--wheat); color: #2F342B; }
+
+  /* ---------- ticker across the top ---------- */
+  .ticker { background: var(--band); color: var(--band-ink); overflow: hidden; padding: 10px 0 8px; }
+  .ticker-track { display: flex; width: max-content; animation: tick 60s linear infinite; }
+  .ticker:hover .ticker-track { animation-play-state: paused; }
+  .js-ticker .ticker-track { animation: none; }
+  .ticker-set { display: flex; align-items: baseline; }
+  .tk { display: inline-flex; align-items: baseline; gap: 14px; padding: 0 22px; white-space: nowrap; }
+  .tk .en { font-style: italic; font-size: 1rem; opacity: .85; }
+  .tk .ar { font-family: var(--ruqaa); font-size: 1.6rem; line-height: 1; color: var(--wheat); }
+  .tk::after { content: ""; width: 6px; height: 6px; background: var(--sage); transform: rotate(45deg); margin-left: 22px; align-self: center; }
+  @keyframes tick { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .ticker-track { animation: none; }
+  }
+
+  /* ---------- name, pinned top left ---------- */
+  .side { position: fixed; top: 76px; bottom: 0; left: 36px; width: 320px; z-index: 5; overflow-y: auto; padding-bottom: 32px; scrollbar-width: none; overscroll-behavior: contain; }
+  .side::-webkit-scrollbar { display: none; }
+  .side-news { margin-top: 30px; padding-right: 8px; }
+  h2.side-h { font-size: 1.2rem; margin: 0 0 8px; padding-left: 20px; }
+  h2.side-h::after { transform: none; }
+  ul.news { list-style: none; padding: 0 0 0 20px; margin: 0; font-size: .95rem; line-height: 1.45; }
+  ul.news li { padding: 8px 0; border-top: 1px solid var(--rule); }
+  ul.news .d { display: block; color: var(--muted); font-size: .85rem; font-variant-numeric: oldstyle-nums; }
+  .mast { display: block; text-decoration: none; color: var(--link); }
+  .mast .en { display: block; font-style: italic; font-size: 1.6rem; line-height: 1.1; letter-spacing: -.01em; }
+  .mast .ar { display: block; text-align: left; font-family: var(--ruqaa); font-size: 2.3rem; color: var(--link); margin-top: 4px; line-height: 1.15; }
+  .mast:hover .en { text-decoration: underline; text-decoration-thickness: 1px; }
+
+  main { position: relative; max-width: 38rem; margin: 0 0 0 max(400px, calc(50% - 15rem)); padding: 72px 16px 0 0; }
+
+  p { margin: 0 0 1em; }
+  .hi { font-size: 1.28rem; line-height: 1.55; }
+  h2 { color: var(--head); font-size: 1.65rem; font-weight: 500; line-height: 1.2; margin: 64px 0 18px; letter-spacing: -.01em; }
+  h3 { color: var(--head); font-size: 1.22rem; font-weight: 500; font-style: italic; line-height: 1.3; margin: 36px 0 10px; }
+
+  /* ---------- shaped photos ---------- */
+  .shape { position: absolute; margin: 0; }
+  .shape img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .diamond { clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); }
+  .star { clip-path: polygon(50% 1%, 62.5% 35%, 99% 36.5%, 70.5% 59%, 80.5% 95%, 50% 74.5%, 19.5% 95%, 29.5% 59%, 1% 36.5%, 37.5% 35%); }
+  .arch { border-radius: 999px 999px 14px 14px; overflow: hidden; }
+  .blob { border-radius: 58% 42% 52% 48% / 46% 58% 42% 54%; overflow: hidden; }
+  .pill { border-radius: 999px; overflow: hidden; }
+  .sparkle { position: absolute; width: 26px; height: 26px; color: var(--link); }
+  .sparkle.s2 { width: 16px; height: 16px; color: var(--sage); }
+
+  .collage { position: relative; margin: 0 0 40px; }
+  .collage.top { height: 300px; }
+  .collage.top .diamond { width: 290px; height: 290px; left: 0; top: 0; }
+  .collage.top .star { width: 190px; height: 190px; left: 245px; top: 120px; }
+  .collage.top .star img { object-position: 50% 100%; }
+  .collage.top .sparkle { left: 268px; top: 36px; }
+  .collage.top .sparkle.s2 { left: 450px; top: 110px; }
+
+  .collage.justice { height: 340px; margin-top: 28px; }
+  .collage.justice .arch { width: 230px; height: 310px; left: 0; top: 0; }
+  .collage.justice .arch img { object-position: 78% 50%; }
+  .collage.justice .blob { width: 290px; height: 200px; left: 200px; top: 120px; }
+  .collage.justice .sparkle { left: 270px; top: 50px; }
+
+  .pill-fig { margin: 22px 0 8px; height: 250px; position: relative; }
+  .pill-fig .pill { position: static; height: 100%; }
+  .pill-fig .pill img { object-position: 50% 45%; }
+
+  .callout { background: var(--note); border-left: 3px solid var(--sage); padding: 12px 18px; margin: 18px 0; font-style: italic; border-radius: 0 6px 6px 0; }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout cite { font-style: normal; color: var(--muted); font-size: .95rem; }
+
+  .related { color: var(--muted); margin: 18px 0 6px; }
+  .cite { font-size: 1rem; color: var(--muted); padding-left: 14px; border-left: 2px solid var(--rule); }
+  .cite em { color: var(--ink); }
+  .soon { font-style: normal; border-left-color: var(--link); }
+  ul.works, ul.plain { margin: 0 0 1em; padding-left: 1.3em; }
+  ul.works li { margin: 0 0 14px; }
+  ul.plain li { margin: 0 0 10px; }
+  ul.works li::marker, ul.plain li::marker { color: var(--sage); }
+  ul.works .t { font-weight: 600; }
+  ul.works .me { font-style: italic; }
+
+  /* ---------- fun icons ---------- */
+  .fun { list-style: none; padding: 0; margin: 30px 0 10px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; text-align: center; }
+  .fun li { display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: .95rem; line-height: 1.3; }
+  .fun li:nth-child(even) { flex-direction: column-reverse; justify-content: flex-end; }
+  .fun svg { width: 68px; height: 68px; flex: none; }
+  .fun .lbl { display: block; min-height: 2.7em; }
+
+  /* wide screens: icons scattered in the margins around the text */
+  @media (min-width: 1360px) {
+    .fun { display: block; margin: 0; height: 0; }
+    .fun li, .fun li:nth-child(even) { position: absolute; width: 140px; flex-direction: column; justify-content: flex-start; transform: rotate(var(--rot, 0deg)); }
+    .fun .lbl { min-height: 0; }
+    .fun li:nth-child(1) { --rot: -6deg; top: 6%;  left: calc(100% + 70px); }
+    .fun li:nth-child(2) { --rot: 5deg;  top: 27%; right: calc(100% + 60px); }
+    .fun li:nth-child(3) { --rot: 7deg;  top: 46%; left: calc(100% + 110px); }
+    .fun li:nth-child(4) { --rot: -5deg; top: 66%; right: calc(100% + 70px); }
+    .fun li:nth-child(5) { --rot: -4deg; top: 84%; left: calc(100% + 80px); }
+  }
+  .contact { margin: 0 0 6px; }
+  footer { max-width: 38rem; margin: 64px 0 0 max(400px, calc(50% - 15rem)); padding: 20px 16px 64px 0; border-top: 1px solid var(--rule); color: var(--muted); font-size: .95rem; }
+
+  .morph { width: 310px; height: 310px; margin: 20px 0 0; clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); will-change: clip-path; }
+  .morph img { display: block; width: 100%; height: 100%; object-fit: cover; filter: saturate(.85); }
+  .side-spark { position: absolute; top: 118px; left: 272px; width: 22px; height: 22px; color: var(--link); transform-origin: 50% 50%; }
+  .toc { margin-top: 26px; display: flex; flex-direction: column; gap: 2px; font-size: 1.02rem; }
+  .toc a { color: var(--muted); text-decoration: none; padding: 2px 0 2px 20px; position: relative; transition: color .25s; }
+  .toc a::before { content: ""; position: absolute; left: 3px; top: .72em; width: 8px; height: 8px; background: var(--link); transform: rotate(45deg) scale(0); transition: transform .35s cubic-bezier(.3,1.6,.5,1); }
+  .toc a:hover { color: var(--link); }
+  .toc a.on { color: var(--link); }
+  .toc a.on::before { transform: rotate(45deg) scale(1); }
+
+  /* twinkle beside each section title as it scrolls into view */
+  h2::after {
+    content: ""; display: inline-block; width: .55em; height: .55em; margin-left: .4em; vertical-align: .12em;
+    background: var(--link);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0C13 8 16 11 24 12C16 13 13 16 12 24C11 16 8 13 0 12C8 11 11 8 12 0Z'/%3E%3C/svg%3E") center / contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0C13 8 16 11 24 12C16 13 13 16 12 24C11 16 8 13 0 12C8 11 11 8 12 0Z'/%3E%3C/svg%3E") center / contain no-repeat;
+    transform: scale(0) rotate(-120deg); transition: transform .7s cubic-bezier(.3,1.7,.5,1);
+  }
+  h2.lit::after { transform: scale(1) rotate(0); }
+  .no-js h2::after, .reduce h2::after { transform: none; transition: none; }
+
+  @media (min-width: 1081px) and (max-height: 820px) { .side { top: 64px; } .morph { width: 240px; height: 240px; } .side-spark { top: 100px; left: 232px; } }
+  @media (max-width: 1080px) {
+    .side { position: static; width: auto; padding: 24px 16px 0; max-width: 38rem; margin: 0 auto; }
+    .toc, .side-spark { display: none; }
+    .side { overflow: visible; }
+    .side-news { margin-top: 28px; }
+    h2.side-h, ul.news { padding-left: 0; }
+    .morph { width: min(340px, 86vw); height: min(340px, 86vw); margin-top: 22px; }
+    main { margin: 0 auto; padding: 32px 16px 0; }
+    footer { margin: 64px auto 0; padding: 20px 16px 64px; }
+  }
+  @media (max-width: 560px) {
+    body { font-size: 1.08rem; }
+    .hi { font-size: 1.18rem; }
+    .collage.top { height: 240px; }
+    .collage.top .diamond { width: 230px; height: 230px; }
+    .collage.top .star { width: 150px; height: 150px; left: auto; right: 0; top: 110px; }
+    .collage.top .sparkle { left: 214px; top: 28px; }
+    .collage.top .sparkle.s2 { display: none; }
+    .collage.justice { height: 330px; }
+    .collage.justice .arch { width: 190px; height: 260px; }
+    .collage.justice .blob { width: 210px; height: 150px; left: auto; right: 0; top: 170px; }
+    .collage.justice .sparkle { left: auto; right: 30px; top: 60px; }
+    .pill-fig { height: 180px; }
+    .fun { grid-template-columns: repeat(3, 1fr); row-gap: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ticker" aria-label="Haya Bugshan, هيا بغشان">
+  <div class="ticker-track" aria-hidden="true">
+    <div class="ticker-set">
+      <span class="tk"><span class="ar" lang="ar">هيا بغشان</span><span class="en">Haya Bugshan</span></span>
+      <span class="tk"><span class="ar" lang="ar">جامعة براون</span><span class="en">Brown University</span></span>
+      <span class="tk"><span class="ar" lang="ar">علم الأعصاب الحسابي</span><span class="en">Computational Neuroscience</span></span>
+      <span class="tk"><span class="ar" lang="ar">الرياضيات التطبيقية</span><span class="en">Applied Mathematics</span></span>
+      <span class="tk"><span class="ar" lang="ar">العدالة الاجتماعية</span><span class="en">Social justice</span></span>
+      <span class="tk"><span class="ar" lang="ar">جدة</span><span class="en">Jeddah</span></span>
+      <span class="tk"><span class="ar" lang="ar">ترجمة</span><span class="en">Tarjama</span></span>
+    </div>
+    <div class="ticker-set">
+      <span class="tk"><span class="ar" lang="ar">هيا بغشان</span><span class="en">Haya Bugshan</span></span>
+      <span class="tk"><span class="ar" lang="ar">جامعة براون</span><span class="en">Brown University</span></span>
+      <span class="tk"><span class="ar" lang="ar">علم الأعصاب الحسابي</span><span class="en">Computational Neuroscience</span></span>
+      <span class="tk"><span class="ar" lang="ar">الرياضيات التطبيقية</span><span class="en">Applied Mathematics</span></span>
+      <span class="tk"><span class="ar" lang="ar">العدالة الاجتماعية</span><span class="en">Social justice</span></span>
+      <span class="tk"><span class="ar" lang="ar">جدة</span><span class="en">Jeddah</span></span>
+      <span class="tk"><span class="ar" lang="ar">ترجمة</span><span class="en">Tarjama</span></span>
+    </div>
+  </div>
+</div>
+
+<aside class="side">
+  <a class="mast" href="#top" aria-label="Haya Bugshan, back to top">
+    <span class="en">Haya Bugshan</span>
+    <span class="ar" lang="ar" dir="rtl">هيا بغشان</span>
+  </a>
+  <figure class="morph" id="morph"><img src="profile.jpg" alt="Haya smiling, in a varsity jacket" width="562" height="562"></figure>
+  <svg class="side-spark" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 0 C13 8 16 11 24 12 C16 13 13 16 12 24 C11 16 8 13 0 12 C8 11 11 8 12 0 Z" fill="currentColor"/></svg>
+  <nav class="toc" aria-label="On this page">
+    <a href="#top" data-for="top">Hello</a>
+    <a href="#research" data-for="research">Research</a>
+    <a href="#projects" data-for="projects">Projects</a>
+    <a href="#background" data-for="background">Background</a>
+    <a href="#contact" data-for="contact">Contact</a>
+  </nav>
+  <section class="side-news" aria-labelledby="news-h">
+    <h2 id="news-h" class="side-h">News</h2>
+    <ul class="news">
+      <li><span class="d">Nov 2026</span>Presenting PupilFM at the <a href="https://nepsych.org/nepa-schedule-2026/">New England Psychological Association</a> conference.</li>
+      <li><span class="d">Nov 2026</span>Our ecosystem map project with CNTR launches. Check back!</li>
+      <li><span class="d">Oct 2026</span>Featured in <a href="https://www.brown.edu/news/2026-10-08/carney-quantitative-scholars">Brown News</a> as a Carney Quantitative Scholar.</li>
+      <li><span class="d">Aug 2026</span>Presented PupilFM at the <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:826d0f2a-bc63-4691-9763-340848e2b3d3">Brown Summer Research Symposium</a>.</li>
+    </ul>
+  </section>
+</aside>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="spark" viewBox="0 0 24 24"><path d="M12 0 C13 8 16 11 24 12 C16 13 13 16 12 24 C11 16 8 13 0 12 C8 11 11 8 12 0 Z" fill="currentColor"/></symbol>
+</svg>
+
+<main id="top">
+
+  <p class="hi">Hi! I’m Haya, a computational neuroscientist in training. I build models that read what the brain is doing from the signals it leaves behind, like a pupil changing size or a wave of EEG, and I work to hold AI systems accountable to the people they affect.</p>
+
+  <p>I’m an undergraduate at <a href="https://www.brown.edu/">Brown University</a> (class of 2028), concentrating in Computational Neuroscience and Applied Mathematics, and a 2026 <a href="https://www.brown.edu/news/2026-10-08/carney-quantitative-scholars">Carney Quantitative Scholar</a>. I work across the <a href="https://research.clps.brown.edu/songlab/people.html">Perception, Action &amp; Cognition Lab</a>, the <a href="https://sites.brown.edu/cpl/">Watanabe Lab</a>, and Brown’s <a href="https://cntr.brown.edu/">Center for Technological Responsibility</a>. I’m from Jeddah, Saudi Arabia, and I’m working toward a PhD in computational neuroscience and machine learning.</p>
+
+  <p>I came to Brown planning to study mathematics and philosophy. The questions stayed the same, about minds and what we can know about them; the tools changed. I also write about all of it on my Substack, <a href="https://hayabugshan.substack.com/">Tarjama</a>.</p>
+
+
+  <h2 id="research">Research</h2>
+
+  <h3>Foundation models for pupil dynamics</h3>
+  <p>In the <a href="https://research.clps.brown.edu/songlab/people.html">Perception, Action &amp; Cognition Lab</a>, with Joo-Hyun Song and Jason Ritt, I built <strong>PupilFM</strong>, a pupillometry foundation model pretrained on 1,000+ hours of recordings from 2,000+ people. I’m asking whether it learns general pupil dynamics that reveal cognitive load, arousal and attention on tasks it has never seen. <a href="https://www.brown.edu/news/2026-10-08/carney-quantitative-scholars">Featured in Brown News</a>.</p>
+  <p class="cite">Presented at the <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:826d0f2a-bc63-4691-9763-340848e2b3d3">Brown University Summer Research Symposium</a>, 2026: <em>Learning Task-General Signals of Cognition from Pupil Dynamics via a Pupillometry Foundation Model.</em> <strong>H. Bugshan</strong>, T. Nguyen, J. Lader, J. Song, J. Ritt.</p>
+
+  <h3>LLM accountability for reproductive health information</h3>
+  <p>At CNTR, with the <a href="https://www.reimaginationlab.org/">Re/Imagination Lab</a>, I help <a href="https://cntr.brown.edu/reprod-llms">test how ChatGPT, Claude and Gemini answer reproductive-health questions</a> in English and Spanish across different legal environments, designing the prompts that surface where they fail. With <a href="https://michelle-ding.github.io/">Michelle L. Ding</a>, Harini Suresh, Suresh Venkatasubramanian, Andres Newman and Sofia Segarra.</p>
+
+  <h3>EEG and perceptual learning</h3>
+  <p>In the <a href="https://sites.brown.edu/cpl/">Watanabe Lab</a>, I built an end-to-end EEG pipeline for a visual perceptual-learning study, from preprocessing to mixed-effects and LIMO statistics, and run PsychoPy pupillary-biofeedback experiments.</p>
+
+  <h3>Machine learning in neurosurgery</h3>
+  <p>With the Lee Lab’s CANARY project at Rhode Island Hospital, I built a model that combines clinical data with LLM embeddings to predict how long a surgery will take.</p>
+  <p class="cite">Presented at the Brown University Summer Research Symposium, 2025: <em>Improving Estimation of OR Times Using Multimodal Clinical Data.</em> C. Ying*, <strong>H. Bugshan</strong>*, S. Lee. *Equal contribution.</p>
+
+
+  <h2 id="projects">Other fun projects!</h2>
+  <ul class="plain">
+    <li>I write a Substack, <a href="https://hayabugshan.substack.com/">Tarjama</a> (<span lang="ar" dir="rtl">ترجمة</span>, “translation”), translating artificial intelligence, neuroscience, 3arabisms, womanhood, and the occasional laugh.</li>
+    <li>I’m Vice President of the AI Robotics Ethics Society at Brown, where I lead recruitment, coordinate our initiative teams, and bring in speakers and partners working across AI, robotics and ethics.</li>
+    <li>I build things outside the lab too, from vision-language model experiments to data storytelling. Check out my <a href="https://github.com/hayafaisalbugshan">GitHub</a>.</li>
+  </ul>
+
+
+  <h2 id="background">Background</h2>
+  <p>At Brown I’m working toward a B.A.Sc. in Computational Neuroscience and Applied Mathematics. My mathematics coursework includes linear algebra, an introduction to proofs, multivariable calculus with theory, real analysis, applied ODEs, and probability and statistics; in computer science, data structures and algorithms, data foundations, and deep learning.</p>
+  <p>I mostly work in Python and MATLAB, with PyTorch, NumPy, Pandas, scikit-learn, EEGLAB and PsychoPy. I’m a native Arabic speaker and fluent in English. I received an Undergraduate Teaching and Research Award in 2025, completed the HNN Bootcamp, and am CITI certified in human subjects research and the responsible conduct of research. The full list is in my <a href="resume.pdf">CV</a>.</p>
+
+  <h2 id="contact">Contact</h2>
+  <p class="contact">haya_bugshan [at] brown [dot] edu</p>
+  <p><a href="https://github.com/hayafaisalbugshan">GitHub</a>&nbsp;&nbsp; <a href="https://www.linkedin.com/in/hayabugshan">LinkedIn</a>&nbsp;&nbsp; <a href="https://hayabugshan.substack.com/">Substack</a>&nbsp;&nbsp; <a href="resume.pdf">CV</a></p>
+
+</main>
+
+<footer>Haya Bugshan, between Providence and Jeddah.</footer>
+
+<script>
+(() => {
+  const root = document.documentElement;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) root.classList.add('reduce');
+
+  /* ----- section twinkles + sidebar highlight ----- */
+  const heads = [...document.querySelectorAll('main h2')];
+  const links = [...document.querySelectorAll('.toc a')];
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('lit'); }), { rootMargin: '0px 0px -15% 0px' });
+  heads.forEach(h => io.observe(h));
+  const marks = ['top', ...heads.map(h => h.id)].map(id => document.getElementById(id));
+  const setActive = () => {
+    let cur = 'top';
+    for (const el of marks) if (el && el.getBoundingClientRect().top < innerHeight * 0.35) cur = el.id;
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) cur = marks[marks.length - 1].id;
+    links.forEach(a => a.classList.toggle('on', a.dataset.for === cur));
+  };
+
+  if (reduce) { setActive(); addEventListener('scroll', setActive, { passive: true }); return; }
+
+  /* ----- photo frame that changes shape as you scroll ----- */
+  const N = 72;
+  const rayPoly = (verts, th) => {            // distance from centre to polygon edge along angle th
+    const dx = Math.cos(th), dy = Math.sin(th); let best = 1;
+    for (let i = 0; i < verts.length; i++) {
+      const [ax, ay] = verts[i], [bx, by] = verts[(i + 1) % verts.length];
+      const ex = bx - ax, ey = by - ay, den = dx * ey - dy * ex;
+      if (Math.abs(den) < 1e-9) continue;
+      const t = (ax * ey - ay * ex) / den, u = (ax * dy - ay * dx) / den;
+      if (t > 0 && u >= 0 && u <= 1) best = Math.min(best, t);
+    }
+    return best;
+  };
+  const starVerts = (k, inner, off = -Math.PI / 2) => Array.from({ length: k * 2 }, (_, i) => {
+    const a = off + i * Math.PI / k, r = i % 2 ? inner : 1; return [Math.cos(a) * r, Math.sin(a) * r];
+  });
+  const angles = Array.from({ length: N }, (_, i) => -Math.PI / 2 + i * 2 * Math.PI / N);
+  const shape = f => angles.map(f);
+  const shapes = [
+    shape(th => rayPoly([[0, -1], [1, 0], [0, 1], [-1, 0]], th)),                              // diamond
+    shape(th => rayPoly(starVerts(5, 0.46), th)),                                              // star
+    shape(th => 0.86 + 0.14 * Math.cos(8 * (th + Math.PI / 2))),                               // flower
+    shape(th => rayPoly(starVerts(4, 0.36), th)),                                              // sparkle
+    shape(() => 0.98)                                                                          // circle
+  ];
+  const morph = document.getElementById('morph');
+  const spark = document.querySelector('.side-spark');
+  const ease = x => x * x * (3 - 2 * x);
+  const drawShape = p => {
+    const seg = p * (shapes.length - 1), i = Math.min(shapes.length - 2, Math.floor(seg)), f = ease(seg - i);
+    const a = shapes[i], b = shapes[i + 1];
+    const pts = angles.map((th, k) => {
+      const r = a[k] + (b[k] - a[k]) * f;
+      return `${(50 + 50 * r * Math.cos(th)).toFixed(2)}% ${(50 + 50 * r * Math.sin(th)).toFixed(2)}%`;
+    });
+    morph.style.clipPath = `polygon(${pts.join(',')})`;
+    if (spark) spark.style.transform = `rotate(${p * 540}deg) scale(${1 + 0.25 * Math.sin(p * Math.PI * 6)})`;
+  };
+
+  /* ----- ticker that runs faster while you scroll ----- */
+  const icons = [...document.querySelectorAll('.fun li')];
+  const wide = matchMedia('(min-width: 1360px)');
+  const ticker = document.querySelector('.ticker-track');
+  root.classList.add('js-ticker');
+  let x = 0, lastY = scrollY, boost = 0, last = performance.now(), hovering = false;
+  document.querySelector('.ticker').addEventListener('pointerenter', () => hovering = true);
+  document.querySelector('.ticker').addEventListener('pointerleave', () => hovering = false);
+
+  const frame = now => {
+    const dt = Math.min(64, now - last) / 1000; last = now;
+    const dy = scrollY - lastY; lastY = scrollY;
+    boost += (dy * 0.9 - boost) * 0.15;
+    if (!hovering) x -= 32 * dt + boost;
+    const half = ticker.scrollWidth / 2;
+    if (half) { x %= half; if (x > 0) x -= half; }
+    ticker.style.transform = `translateX(${x.toFixed(1)}px)`;
+    const max = document.documentElement.scrollHeight - innerHeight;
+    drawShape(max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0);
+    setActive();
+    if (wide.matches) icons.forEach((li, i) => {
+      const r = li.getBoundingClientRect(), c = r.top + r.height / 2 - innerHeight / 2;
+      li.style.translate = `0 ${(-c * (0.12 + 0.04 * (i % 3))).toFixed(1)}px`;
+      li.style.rotate = `${(c * 0.012 * (i % 2 ? 1 : -1)).toFixed(2)}deg`;
+    }); else icons.forEach(li => { li.style.translate = ''; li.style.rotate = ''; });
+    requestAnimationFrame(frame);
+  };
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
