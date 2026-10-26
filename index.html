@@ -68,24 +68,12 @@
   :focus-visible { outline: 2px solid var(--link); outline-offset: 3px; border-radius: 2px; }
   ::selection { background: var(--wheat); color: #2F342B; }
 
-  /* ---------- ticker across the top ---------- */
-  .ticker { background: var(--band); color: var(--band-ink); overflow: hidden; padding: 10px 0 8px; }
-  .ticker-track { display: flex; width: max-content; animation: tick 60s linear infinite; }
-  .ticker:hover .ticker-track { animation-play-state: paused; }
-  .js-ticker .ticker-track { animation: none; }
-  .ticker-set { display: flex; align-items: baseline; }
-  .tk { display: inline-flex; align-items: baseline; gap: 14px; padding: 0 22px; white-space: nowrap; }
-  .tk .en { font-style: italic; font-size: 1rem; opacity: .85; }
-  .tk .ar { font-family: var(--ruqaa); font-size: 1.6rem; line-height: 1; color: var(--wheat); }
-  .tk::after { content: ""; width: 6px; height: 6px; background: var(--sage); transform: rotate(45deg); margin-left: 22px; align-self: center; }
-  @keyframes tick { to { transform: translateX(-50%); } }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .ticker-track { animation: none; }
   }
 
   /* ---------- name, pinned top left ---------- */
-  .side { position: fixed; top: 76px; bottom: 0; left: 36px; width: 320px; z-index: 5; overflow-y: auto; padding-bottom: 32px; scrollbar-width: none; overscroll-behavior: contain; }
+  .side { position: fixed; top: 40px; bottom: 0; left: 36px; width: 320px; z-index: 5; overflow-y: auto; padding-bottom: 32px; scrollbar-width: none; overscroll-behavior: contain; }
   .side::-webkit-scrollbar { display: none; }
   .side-news { margin-top: 30px; padding-right: 8px; }
   h2.side-h { font-size: 1.2rem; margin: 0 0 8px; padding-left: 20px; }
@@ -191,7 +179,7 @@
   h2.lit::after { transform: scale(1) rotate(0); }
   .no-js h2::after, .reduce h2::after { transform: none; transition: none; }
 
-  @media (min-width: 1081px) and (max-height: 820px) { .side { top: 64px; } .morph { width: 240px; height: 240px; } .side-spark { top: 100px; left: 232px; } }
+  @media (min-width: 1081px) and (max-height: 820px) { .side { top: 32px; } .morph { width: 240px; height: 240px; } .side-spark { top: 100px; left: 232px; } }
   @media (max-width: 1080px) {
     .side { position: static; width: auto; padding: 24px 16px 0; max-width: 38rem; margin: 0 auto; }
     .toc, .side-spark { display: none; }
@@ -220,29 +208,6 @@
 </style>
 </head>
 <body>
-
-<div class="ticker" aria-label="Haya Bugshan, هيا بقشان">
-  <div class="ticker-track" aria-hidden="true">
-    <div class="ticker-set">
-      <span class="tk"><span class="ar" lang="ar">هيا بقشان</span><span class="en">Haya Bugshan</span></span>
-      <span class="tk"><span class="ar" lang="ar">جامعة براون</span><span class="en">Brown University</span></span>
-      <span class="tk"><span class="ar" lang="ar">علم الأعصاب الحسابي</span><span class="en">Computational Neuroscience</span></span>
-      <span class="tk"><span class="ar" lang="ar">الرياضيات التطبيقية</span><span class="en">Applied Mathematics</span></span>
-      <span class="tk"><span class="ar" lang="ar">العدالة الاجتماعية</span><span class="en">Social justice</span></span>
-      <span class="tk"><span class="ar" lang="ar">جدة</span><span class="en">Jeddah</span></span>
-      <span class="tk"><span class="ar" lang="ar">ترجمة</span><span class="en">Tarjama</span></span>
-    </div>
-    <div class="ticker-set">
-      <span class="tk"><span class="ar" lang="ar">هيا بقشان</span><span class="en">Haya Bugshan</span></span>
-      <span class="tk"><span class="ar" lang="ar">جامعة براون</span><span class="en">Brown University</span></span>
-      <span class="tk"><span class="ar" lang="ar">علم الأعصاب الحسابي</span><span class="en">Computational Neuroscience</span></span>
-      <span class="tk"><span class="ar" lang="ar">الرياضيات التطبيقية</span><span class="en">Applied Mathematics</span></span>
-      <span class="tk"><span class="ar" lang="ar">العدالة الاجتماعية</span><span class="en">Social justice</span></span>
-      <span class="tk"><span class="ar" lang="ar">جدة</span><span class="en">Jeddah</span></span>
-      <span class="tk"><span class="ar" lang="ar">ترجمة</span><span class="en">Tarjama</span></span>
-    </div>
-  </div>
-</div>
 
 <aside class="side">
   <a class="mast" href="#top" aria-label="Haya Bugshan, back to top">
@@ -368,31 +333,10 @@
     if (spark) spark.style.transform = `rotate(${p * 540}deg) scale(${1 + 0.25 * Math.sin(p * Math.PI * 6)})`;
   };
 
-  /* ----- ticker that runs faster while you scroll ----- */
-  const icons = [...document.querySelectorAll('.fun li')];
-  const wide = matchMedia('(min-width: 1360px)');
-  const ticker = document.querySelector('.ticker-track');
-  root.classList.add('js-ticker');
-  let x = 0, lastY = scrollY, boost = 0, last = performance.now(), hovering = false;
-  document.querySelector('.ticker').addEventListener('pointerenter', () => hovering = true);
-  document.querySelector('.ticker').addEventListener('pointerleave', () => hovering = false);
-
-  const frame = now => {
-    const dt = Math.min(64, now - last) / 1000; last = now;
-    const dy = scrollY - lastY; lastY = scrollY;
-    boost += (dy * 0.9 - boost) * 0.15;
-    if (!hovering) x -= 32 * dt + boost;
-    const half = ticker.scrollWidth / 2;
-    if (half) { x %= half; if (x > 0) x -= half; }
-    ticker.style.transform = `translateX(${x.toFixed(1)}px)`;
+  const frame = () => {
     const max = document.documentElement.scrollHeight - innerHeight;
     drawShape(max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0);
     setActive();
-    if (wide.matches) icons.forEach((li, i) => {
-      const r = li.getBoundingClientRect(), c = r.top + r.height / 2 - innerHeight / 2;
-      li.style.translate = `0 ${(-c * (0.12 + 0.04 * (i % 3))).toFixed(1)}px`;
-      li.style.rotate = `${(c * 0.012 * (i % 2 ? 1 : -1)).toFixed(2)}deg`;
-    }); else icons.forEach(li => { li.style.translate = ''; li.style.rotate = ''; });
     requestAnimationFrame(frame);
   };
   requestAnimationFrame(frame);
