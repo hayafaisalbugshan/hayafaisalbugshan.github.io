@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Haya Bugshan — هيا بقشان</title>
 <meta name="description" content="Haya Bugshan's personal website. Computational Neuroscience and Applied Mathematics at Brown University: pupillometry foundation models, EEG, clinical ML, and LLM accountability.">
-<meta name="theme-color" content="#DBE3D6">
+<meta name="theme-color" content="#EEF2E4">
 <meta name="google-site-verification" content="JYq1q79U7gF3GypHJAz9KMEp0ivji6be3enaMrXCe_c" />
 <link rel="canonical" href="https://hayafaisalbugshan.github.io/">
 <script type="application/ld+json">
@@ -25,35 +25,32 @@
   ]
 }
 </script>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 3 L61 32 L32 61 L3 32 Z' fill='%23A9B8A0' stroke='%234A5638' stroke-width='3'/%3E%3Cpath d='M32 16C33 27 37 31 48 32C37 33 33 37 32 48C31 37 27 33 16 32C27 31 31 27 32 16Z' fill='%23A0553B'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 3 L61 32 L32 61 L3 32 Z' fill='%23A6C98C' stroke='%232D5232' stroke-width='3'/%3E%3Cpath d='M32 16C33 27 37 31 48 32C37 33 33 37 32 48C31 37 27 33 16 32C27 31 31 27 32 16Z' fill='%23D9A21F'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=Aref+Ruqaa:wght@400;700&family=IBM+Plex+Sans:wght@400;500&family=PT+Mono&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper:  #DBE3D6;   /* pale sage, same as Tarjama */
-    --note:   #E7ECE3;
-    --ink:    #2F342B;
-    --muted:  #56604A;
-    --head:   #4A5638;
-    --band:   #4A5638;   /* ticker band */
-    --band-ink:#EEF2EA;
-    --sage:   #A9B8A0;
-    --link:   #A0553B;   /* terracotta */
-    --wheat:  #D9C7A3;
-    --rule:   #BCC6B4;
+    --paper:#EEF2E4; --note:#E2EAD6; --card:#FAFBF5; --ink:#1E2A1D; --muted:#4B5D43; --head:#2D5232;
+    --link:#2E6B3A; --leaf:#A6C98C; --sage:#A6C98C; --accent:#D9A21F; --sun:#F2D35B; --wheat:#F6E7A6; --rule:#C9D5BC;
+    --deep:#1F3A24; --faint:#D3DDC6; --shadow:#1F3A24; --on-pastel:#1F3A24;
     --serif: 'Newsreader', 'Iowan Old Style', Georgia, serif;
     --ruqaa: 'Aref Ruqaa', 'Geeza Pro', serif;
+    color-scheme: light;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --paper:#252A21; --note:#2E3429; --ink:#E4E9DF; --muted:#AEB9A6; --head:#C3D0B8;
-      --band:#38412F; --band-ink:#E4E9DF; --sage:#7C8768; --link:#E09677; --wheat:#D9C7A3; --rule:#3D4536;
+    --paper:#121C15; --note:#1B2A1F; --card:#18251B; --ink:#E5EDDD; --muted:#A9BCA0; --head:#BFDDA9;
+    --link:#9FD68A; --leaf:#4E7A45; --sage:#4E7A45; --accent:#F2D35B; --sun:#F2D35B; --wheat:#5E5321; --rule:#2B3D2E;
+    --deep:#D9E8CC; --faint:#2E4033; --shadow:#050A06; --on-pastel:#1F3A24;
+    color-scheme: dark;
     }
   }
   :root[data-theme="dark"] {
-    --paper:#252A21; --note:#2E3429; --ink:#E4E9DF; --muted:#AEB9A6; --head:#C3D0B8;
-    --band:#38412F; --band-ink:#E4E9DF; --sage:#7C8768; --link:#E09677; --wheat:#D9C7A3; --rule:#3D4536;
+    --paper:#121C15; --note:#1B2A1F; --card:#18251B; --ink:#E5EDDD; --muted:#A9BCA0; --head:#BFDDA9;
+    --link:#9FD68A; --leaf:#4E7A45; --sage:#4E7A45; --accent:#F2D35B; --sun:#F2D35B; --wheat:#5E5321; --rule:#2B3D2E;
+    --deep:#D9E8CC; --faint:#2E4033; --shadow:#050A06; --on-pastel:#1F3A24;
+    color-scheme: dark;
   }
 
   *, *::before, *::after { box-sizing: border-box; }
@@ -66,7 +63,7 @@
   a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: .18em; }
   a:hover { text-decoration-thickness: 2px; }
   :focus-visible { outline: 2px solid var(--link); outline-offset: 3px; border-radius: 2px; }
-  ::selection { background: var(--wheat); color: #2F342B; }
+  ::selection { background: var(--wheat); color: var(--ink); }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -83,7 +80,7 @@
   ul.news .d { display: block; color: var(--muted); font-size: .85rem; font-variant-numeric: oldstyle-nums; }
   .mast { display: block; text-decoration: none; color: var(--link); }
   .mast .en { display: block; font-style: italic; font-size: 1.6rem; line-height: 1.1; letter-spacing: -.01em; }
-  .mast .ar { display: block; text-align: left; font-family: var(--ruqaa); font-size: 2.3rem; color: var(--link); margin-top: 4px; line-height: 1.15; }
+  .mast .ar { display: block; text-align: left; font-family: var(--ruqaa); font-size: 2.3rem; color: var(--head); margin-top: 4px; line-height: 1.15; }
   .mast:hover .en { text-decoration: underline; text-decoration-thickness: 1px; }
 
   main { position: relative; max-width: 38rem; margin: 0 0 0 max(400px, calc(50% - 15rem)); padding: 72px 16px 0 0; }
@@ -101,7 +98,7 @@
   .arch { border-radius: 999px 999px 14px 14px; overflow: hidden; }
   .blob { border-radius: 58% 42% 52% 48% / 46% 58% 42% 54%; overflow: hidden; }
   .pill { border-radius: 999px; overflow: hidden; }
-  .sparkle { position: absolute; width: 26px; height: 26px; color: var(--link); }
+  .sparkle { position: absolute; width: 26px; height: 26px; color: var(--accent); }
   .sparkle.s2 { width: 16px; height: 16px; color: var(--sage); }
 
   .collage { position: relative; margin: 0 0 40px; }
@@ -127,6 +124,114 @@
   .callout cite { font-style: normal; color: var(--muted); font-size: .95rem; }
 
   .related { color: var(--muted); margin: 18px 0 6px; }
+
+  /* ---------- project figures ---------- */
+  .fig { margin: 20px 0 14px; background: var(--note); border-radius: 12px; padding: 16px 18px 12px; }
+  .fig figcaption { font-size: .88rem; line-height: 1.45; color: var(--muted); font-style: italic; margin-top: 8px; }
+  .fig svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .fig text { font-family: var(--serif); fill: var(--muted); }
+
+  /* PupilFM */
+  #pupilFig .axis { stroke: var(--rule); stroke-width: 1; }
+  #pupilFig .trace { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  #pupilFig .pred { fill: none; stroke: var(--accent); stroke-width: 2.6; stroke-linecap: round; stroke-dasharray: 4 4; }
+  #pupilFig .future { fill: url(#pfHatch); stroke: var(--sage); stroke-width: 1.2; }
+  #pupilFig .hatch { stroke: var(--sage); stroke-width: 1.2; }
+  #pupilFig .now { stroke: var(--accent); stroke-width: 1.4; }
+  #pupilFig .box { fill: var(--paper); stroke: var(--head); stroke-width: 1.4; }
+  #pupilFig .cell { fill: var(--sage); }
+  #pupilFig .cell.off { fill: none; stroke: var(--rule); stroke-width: 1; }
+  #pupilFig.run .cell:not(.off) { animation: fire 1.1s ease-in-out infinite; }
+  #pupilFig .arrow { stroke: var(--muted); stroke-width: 1.4; fill: none; }
+  #pupilFig .emb { opacity: 0; transition: opacity .35s; }
+  #pupilFig.p2 .emb { opacity: 1; }
+  #pupilFig .bar-bg { fill: var(--paper); }
+  #pupilFig .bar { fill: var(--link); transform-box: fill-box; transform-origin: left center; transform: scaleX(0); transition: transform 1s cubic-bezier(.2,.8,.2,1); }
+  #pupilFig.p3 .bar { transform: scaleX(var(--w)); }
+  #pupilFig .ttl { font-size: 16px; fill: var(--head); font-weight: 600; }
+  #pupilFig .sm { font-size: 15px; }
+  #pupilFig .xs { font-size: 13px; font-style: italic; }
+  @keyframes fire { 0%, 100% { fill: var(--leaf); } 50% { fill: var(--accent); } }
+
+  /* Ecosystem: paper -> public site, styled like ncii-ecosystem.org */
+  .fig.eco { --ep: var(--link); --ed: var(--deep); background: var(--card); border: 2px solid var(--ep); border-radius: 4px; padding: 0; box-shadow: 6px 6px 0 var(--shadow); overflow: hidden; margin-right: 6px; }
+  .eco svg { padding: 14px 14px 4px; }
+  .eco figcaption { font: 14px/1.45 'IBM Plex Sans', -apple-system, sans-serif; font-style: normal; color: var(--ed); padding: 0 16px 14px; margin: 0; }
+  #ecoFig text { font-family: 'PT Mono', ui-monospace, Menlo, monospace; fill: var(--deep); }
+  #ecoFig .paper { fill: var(--card); stroke: var(--muted); stroke-width: 1.2; }
+  #ecoFig .pline { fill: var(--faint); transition: fill .3s; }
+  #ecoFig .pline.hl { fill: var(--accent); }
+  #ecoFig .pfig { fill: none; stroke: var(--rule); stroke-width: 1.2; }
+  #ecoFig .tiny { font-size: 10px; fill: var(--muted); }
+  #ecoFig .lbl { font-size: 12px; fill: var(--link); letter-spacing: .04em; }
+  #ecoFig .arrow { stroke: var(--link); stroke-width: 2; fill: none; }
+  #ecoFig .win { fill: var(--card); stroke: var(--link); stroke-width: 2; }
+  #ecoFig .shadow { fill: var(--shadow); }
+  #ecoFig .winbar { stroke: var(--link); stroke-width: 2; }
+  #ecoFig .tab { font-size: 12px; fill: var(--link); }
+  #ecoFig .tab-ul { fill: var(--accent); transition: transform .4s; }
+  #ecoFig .scene { transition: transform .5s cubic-bezier(.2,.8,.2,1), opacity .4s; }
+  #ecoFig .card { stroke: #1F3A24; stroke-width: 2; }
+  #ecoFig .sk { fill: var(--deep); opacity: .2; }
+  #ecoFig .scene .sk { fill: #1F3A24; }
+  #ecoFig .dot { fill: var(--faint); transition: fill .3s; }
+  #ecoFig .dot.on { fill: var(--accent); }
+  #ecoFig .row { transition: opacity .3s, transform .3s; }
+  #ecoFig .chip { stroke: #1F3A24; stroke-width: 1.2; }
+  #ecoFig .cnt { font-size: 13px; fill: var(--link); }
+
+  /* Fly: zoom into the brain */
+  #flyFig text { font-family: var(--serif); fill: var(--muted); font-size: 14px; }
+  #flyFig .lbl { font-size: 15px; fill: var(--head); }
+  #flyFig .out { fill: var(--card); stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; }
+  #flyFig .leg { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  #flyFig .stripe { fill: var(--leaf); }
+  #flyFig .eye { fill: #D9534A; stroke: var(--ink); stroke-width: 2; }
+  #flyFig .shine { fill: #fff; }
+  #flyFig .wing { fill: #CFE6F0; fill-opacity: .55; stroke: var(--ink); stroke-width: 1.6; transform-box: fill-box; }
+  #flyFig .wing.l { transform-origin: 100% 0; animation: flapL .18s ease-in-out infinite alternate; }
+  #flyFig .wing.r { transform-origin: 0 0; animation: flapR .18s ease-in-out infinite alternate; }
+  @keyframes flapL { from { transform: rotate(0deg); } to { transform: rotate(14deg); } }
+  @keyframes flapR { from { transform: rotate(0deg); } to { transform: rotate(-14deg); } }
+  #flyFig .blush { fill: #F2A7A0; opacity: .7; }
+  #flyFig { overflow: hidden; border-radius: 8px; }
+  #flyG { transform-box: view-box; transform-origin: 330px 56px; transition: transform 1.5s cubic-bezier(.6,0,.3,1), opacity 1s .5s; }
+  #flyFig.zoom #flyG { transform: scale(7); opacity: 0; }
+  #flyG .bob { animation: bob 1.6s ease-in-out infinite; }
+  @keyframes bob { 50% { transform: translateY(-4px); } }
+  #brainG { opacity: 0; transform-box: view-box; transform-origin: 330px 115px; transform: scale(.35); transition: transform 1.3s cubic-bezier(.2,.8,.2,1) .6s, opacity .8s .7s; }
+  #flyFig.zoom #brainG { opacity: 1; transform: scale(1); }
+  #flyFig .brain { fill: var(--note); stroke: var(--ink); stroke-width: 2; }
+  #flyFig .mb { fill: none; stroke: var(--accent); stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; }
+  #flyFig .calyx { fill: var(--sun); stroke: var(--accent); stroke-width: 2; }
+  #flyFig .kcd { animation: twinkle 1.8s ease-in-out infinite; }
+  @keyframes twinkle { 50% { opacity: .25; } }
+  #flyFig .lead { stroke: var(--muted); stroke-width: 1.2; fill: none; }
+  @media (prefers-reduced-motion: reduce) { #flyFig .wing, #flyG .bob, #flyFig .kcd { animation: none; } }
+
+  /* CNTR chatbot */
+  .chat-fig .wrap { display: grid; grid-template-columns: 1.35fr 1fr; gap: 16px; align-items: start; }
+  .chat { background: var(--card); border-radius: 10px; padding: 10px 12px 12px; min-height: 196px; font-size: .92rem; line-height: 1.4; }
+  .chat-top { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+  .pill { font-size: .78rem; padding: 2px 9px; border-radius: 999px; border: 1px solid var(--rule); color: var(--muted); transition: background .3s, color .3s; }
+  .pill.flash { background: var(--sun); color: #1F3A24; border-color: var(--accent); }
+  .bubble { padding: 7px 11px; border-radius: 12px; margin: 6px 0; max-width: 88%; }
+  .bubble.user { margin-left: auto; background: var(--link); color: var(--paper); border-bottom-right-radius: 4px; min-height: 2.1em; }
+  .bubble.bot { background: var(--note); border-bottom-left-radius: 4px; min-height: 3.2em; }
+  .typing i { display: inline-block; width: 6px; height: 6px; margin-right: 4px; border-radius: 50%; background: var(--muted); animation: dot 1s infinite; }
+  .typing i:nth-child(2) { animation-delay: .15s; } .typing i:nth-child(3) { animation-delay: .3s; }
+  @keyframes dot { 0%, 100% { opacity: .25; } 50% { opacity: 1; } }
+  .lines b { display: block; height: 7px; border-radius: 4px; background: var(--sage); margin: 6px 0; transform-origin: left; animation: grow .5s ease-out both; }
+  @keyframes grow { from { transform: scaleX(0); } }
+  .grid { width: 100%; border-collapse: separate; border-spacing: 4px; font-size: .78rem; color: var(--muted); }
+  .grid th { font-weight: 400; text-align: center; padding: 0 0 2px; }
+  .grid th.rh { text-align: left; white-space: nowrap; padding-right: 4px; }
+  .grid td { height: 26px; border-radius: 6px; background: var(--paper); text-align: center; transition: background .4s; }
+  .grid td.on { background: var(--sage); }
+  .grid td.now { box-shadow: 0 0 0 2px var(--accent) inset; }
+  .grid td.on::after { content: "✓"; color: var(--on-pastel); font-size: .85rem; }
+  .grid-note { font-size: .78rem; color: var(--muted); margin: 6px 0 0 4px; }
+  @media (max-width: 640px) { .chat-fig .wrap { grid-template-columns: 1fr; } }
   .cite { font-size: 1rem; color: var(--muted); padding-left: 14px; border-left: 2px solid var(--rule); }
   .cite em { color: var(--ink); }
   .soon { font-style: normal; border-left-color: var(--link); }
@@ -156,14 +261,31 @@
     .fun li:nth-child(5) { --rot: -4deg; top: 84%; left: calc(100% + 80px); }
   }
   .contact { margin: 0 0 6px; }
+
+  /* ---------- night mode toggle ---------- */
+  .theme { position: fixed; top: 18px; right: 22px; z-index: 20; display: inline-flex; align-items: center; gap: 7px; font: inherit; font-size: .92rem; color: var(--ink); background: var(--card); border: 1.5px solid var(--rule); border-radius: 999px; padding: 5px 13px 5px 10px; cursor: pointer; box-shadow: 3px 3px 0 var(--leaf); }
+  .theme:hover { border-color: var(--link); }
+  .theme svg { width: 17px; height: 17px; fill: var(--accent); }
+  @media (max-width: 1080px) { .theme { position: absolute; top: 22px; } }
+
+  /* ---------- accessibility ---------- */
+  .skip { position: absolute; left: 16px; top: -60px; z-index: 50; background: var(--link); color: var(--paper); padding: 8px 14px; border-radius: 6px; text-decoration: none; }
+  .skip:focus { top: 12px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  h1.name-h { margin: 0; font: inherit; }
+  main:focus { outline: none; }
+  body, svg text, .fig, .chat, .grid { -webkit-user-select: text; user-select: text; }
+  .pause { margin: 16px 0 0 20px; font: inherit; font-size: .9rem; color: var(--muted); background: none; border: 1px solid var(--rule); border-radius: 999px; padding: 3px 12px; cursor: pointer; }
+  .pause:hover { color: var(--link); border-color: var(--link); }
+  .pause[aria-pressed="true"] { color: var(--paper); background: var(--link); border-color: var(--link); }
   footer { max-width: 38rem; margin: 64px 0 0 max(400px, calc(50% - 15rem)); padding: 20px 16px 64px 0; border-top: 1px solid var(--rule); color: var(--muted); font-size: .95rem; }
 
-  .morph { width: 310px; height: 310px; margin: 20px 0 0; clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); will-change: clip-path; }
+  .morph { width: 310px; height: 310px; margin: 20px 0 0; clip-path: circle(48.5% at 50% 50%); will-change: clip-path; }
   .morph img { display: block; width: 100%; height: 100%; object-fit: cover; filter: saturate(.85); }
-  .side-spark { position: absolute; top: 118px; left: 272px; width: 22px; height: 22px; color: var(--link); transform-origin: 50% 50%; }
+  .side-spark { position: absolute; top: 118px; left: 272px; width: 22px; height: 22px; color: var(--accent); transform-origin: 50% 50%; }
   .toc { margin-top: 26px; display: flex; flex-direction: column; gap: 2px; font-size: 1.02rem; }
   .toc a { color: var(--muted); text-decoration: none; padding: 2px 0 2px 20px; position: relative; transition: color .25s; }
-  .toc a::before { content: ""; position: absolute; left: 3px; top: .72em; width: 8px; height: 8px; background: var(--link); transform: rotate(45deg) scale(0); transition: transform .35s cubic-bezier(.3,1.6,.5,1); }
+  .toc a::before { content: ""; position: absolute; left: 3px; top: .72em; width: 8px; height: 8px; background: var(--accent); transform: rotate(45deg) scale(0); transition: transform .35s cubic-bezier(.3,1.6,.5,1); }
   .toc a:hover { color: var(--link); }
   .toc a.on { color: var(--link); }
   .toc a.on::before { transform: rotate(45deg) scale(1); }
@@ -171,7 +293,7 @@
   /* twinkle beside each section title as it scrolls into view */
   h2::after {
     content: ""; display: inline-block; width: .55em; height: .55em; margin-left: .4em; vertical-align: .12em;
-    background: var(--link);
+    background: var(--accent);
     -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0C13 8 16 11 24 12C16 13 13 16 12 24C11 16 8 13 0 12C8 11 11 8 12 0Z'/%3E%3C/svg%3E") center / contain no-repeat;
             mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0C13 8 16 11 24 12C16 13 13 16 12 24C11 16 8 13 0 12C8 11 11 8 12 0Z'/%3E%3C/svg%3E") center / contain no-repeat;
     transform: scale(0) rotate(-120deg); transition: transform .7s cubic-bezier(.3,1.7,.5,1);
@@ -183,6 +305,7 @@
   @media (max-width: 1080px) {
     .side { position: static; width: auto; padding: 24px 16px 0; max-width: 38rem; margin: 0 auto; }
     .toc, .side-spark { display: none; }
+    .pause { margin-left: 0; }
     .side { overflow: visible; }
     .side-news { margin-top: 28px; }
     h2.side-h, ul.news { padding-left: 0; }
@@ -209,11 +332,34 @@
 </head>
 <body>
 
-<aside class="side">
-  <a class="mast" href="#top" aria-label="Haya Bugshan, back to top">
+<a class="skip" href="#top">Skip to main content</a>
+<button class="theme" id="themeBtn" type="button" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path id="themeIcon" d=""/></svg><span id="themeTxt">Night mode</span></button>
+<script>
+(() => {
+  const root = document.documentElement;
+  const sun = 'M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0-5 1.2 3h-2.4L12 2Zm0 20-1.2-3h2.4L12 22ZM2 12l3-1.2v2.4L2 12Zm20 0-3 1.2v-2.4L22 12ZM4.9 4.9l3 1.3-1.7 1.7-1.3-3Zm14.2 14.2-3-1.3 1.7-1.7 1.3 3Zm0-14.2-1.3 3-1.7-1.7 3-1.3ZM4.9 19.1l1.3-3 1.7 1.7-3 1.3Z';
+  const moon = 'M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1Z';
+  let saved = null; try { saved = localStorage.getItem('theme'); } catch (e) {}
+  const systemDark = matchMedia('(prefers-color-scheme: dark)');
+  const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : systemDark.matches;
+  if (saved === 'dark' || saved === 'light') root.dataset.theme = saved;
+  const btn = document.getElementById('themeBtn'), icon = document.getElementById('themeIcon'), txt = document.getElementById('themeTxt');
+  const meta = document.querySelector('meta[name="theme-color"]');
+  const paint = () => { const d = isDark(); btn.setAttribute('aria-pressed', d); txt.textContent = d ? 'Day mode' : 'Night mode';
+    btn.setAttribute('aria-label', d ? 'Switch to day mode' : 'Switch to night mode'); icon.setAttribute('d', d ? sun : moon);
+    if (meta) meta.content = d ? '#121C15' : '#EEF2E4'; };
+  btn.addEventListener('click', () => { const next = isDark() ? 'light' : 'dark'; root.dataset.theme = next; try { localStorage.setItem('theme', next); } catch (e) {} paint(); });
+  systemDark.addEventListener('change', paint);
+  paint();
+})();
+</script>
+
+
+<aside class="side" aria-label="Profile and site navigation">
+  <h1 class="name-h"><a class="mast" href="#top">
     <span class="en">Haya Bugshan</span>
     <span class="ar" lang="ar" dir="rtl">هيا بقشان</span>
-  </a>
+  </a></h1>
   <figure class="morph" id="morph"><img src="profile.jpg" alt="Haya smiling, in a varsity jacket" width="562" height="562"></figure>
   <svg class="side-spark" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 0 C13 8 16 11 24 12 C16 13 13 16 12 24 C11 16 8 13 0 12 C8 11 11 8 12 0 Z" fill="currentColor"/></svg>
   <nav class="toc" aria-label="On this page">
@@ -222,6 +368,7 @@
     <a href="#projects" data-for="projects">Projects</a>
     <a href="#contact" data-for="contact">Contact</a>
   </nav>
+  <button class="pause" id="pauseBtn" type="button" aria-pressed="false">Pause animations</button>
   <section class="side-news" aria-labelledby="news-h">
     <h2 id="news-h" class="side-h">News</h2>
     <ul class="news">
@@ -237,7 +384,7 @@
   <symbol id="spark" viewBox="0 0 24 24"><path d="M12 0 C13 8 16 11 24 12 C16 13 13 16 12 24 C11 16 8 13 0 12 C8 11 11 8 12 0 Z" fill="currentColor"/></symbol>
 </svg>
 
-<main id="top">
+<main id="top" tabindex="-1">
 
   <p class="hi">Hi! I’m Haya, a computational neuroscientist in training. I build models that read what the brain is doing from the signals it leaves behind, like a pupil changing size or a wave of EEG, and I work to hold AI systems accountable to the people they affect.</p>
 
@@ -250,13 +397,118 @@
 
   <h3>Foundation models for pupil dynamics</h3>
   <p>In the <a href="https://research.clps.brown.edu/songlab/people.html">Perception, Action &amp; Cognition Lab</a>, with <a href="https://copsy.brown.edu/people/joo-hyun-song">Joo-Hyun Song</a> and <a href="https://vivo.brown.edu/display/jritt">Jason Ritt</a>, I built <strong>PupilFM</strong>, a pupillometry foundation model pretrained on 1,000+ hours of recordings from 2,000+ people. I’m asking whether it learns general pupil dynamics that reveal cognitive load, arousal and attention on tasks it has never seen. <a href="https://www.brown.edu/news/2026-10-08/carney-quantitative-scholars">Featured in Brown News</a>.</p>
+  <figure class="fig">
+    <svg id="pupilFig" viewBox="0 0 660 210" role="img" aria-label="Animated diagram. A pupil-size recording is read from left to right; everything after the present moment is masked, and PupilFM predicts what comes next using causal attention. Its embedding is then passed to a linear probe that predicts cognitive load, arousal and attention.">
+      <defs><pattern id="pfHatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" class="hatch"/></pattern>
+        <clipPath id="pfSeen"><rect id="pfSeenRect" x="0" y="0" width="0" height="210"/></clipPath></defs>
+      <text x="12" y="20" class="sm">pupil size</text>
+      <line class="axis" x1="12" y1="160" x2="300" y2="160"/>
+      <text x="264" y="182" class="sm">time</text>
+      <path id="pfTrace" class="trace" clip-path="url(#pfSeen)"/>
+      <rect id="pfFuture" class="future" x="60" y="30" width="240" height="126" rx="6"/>
+      <text id="pfFutureLbl" x="180" y="50" text-anchor="middle" class="xs">future, masked</text>
+      <path id="pfPred" class="pred"/>
+      <line id="pfNow" class="now" x1="60" y1="28" x2="60" y2="158"/>
+      <path class="arrow" d="M308 95 H336 M329 89 L336 95 L329 101"/>
+      <rect class="box" x="342" y="36" width="112" height="120" rx="14"/>
+      <text x="398" y="56" text-anchor="middle" class="ttl">PupilFM</text>
+      <g id="pfCausal"></g>
+      <text x="398" y="176" text-anchor="middle" class="xs">causal attention</text>
+      <path class="arrow" d="M460 95 H478 M471 89 L478 95 L471 101"/>
+      <g id="pfEmb"></g>
+      <text x="494" y="176" text-anchor="middle" class="xs">embedding</text>
+      <path class="arrow" d="M510 95 H526 M519 89 L526 95 L519 101"/>
+      <text x="532" y="34" class="xs">linear probe</text>
+      <g id="pfOut"></g>
+    </svg>
+    <figcaption>Causal masking: the model only ever sees the past and learns to predict what comes next. Then we probe its embeddings to see how well they predict cognitive states.</figcaption>
+  </figure>
   <p class="cite">Presented at the <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:826d0f2a-bc63-4691-9763-340848e2b3d3">Brown University Summer Research Symposium</a>, 2026: <em>Learning Task-General Signals of Cognition from Pupil Dynamics via a Pupillometry Foundation Model.</em> <strong>H. Bugshan</strong>, T. Nguyen, J. Lader, J. Song, J. Ritt.</p>
+
+  <h3>Kenyon cell diversity in the fruit fly brain</h3>
+  <p>In the <a href="https://www.kaunlab.com/">Kaun Lab</a>, with <a href="https://www.linkedin.com/in/marygrace-trousdell/">MaryGrace Trousdell</a>, I use machine learning to study Kenyon cells, the neurons at the heart of the fruit fly’s learning and memory center, and what makes their different types distinct. More to share once the work is published.</p>
+
+  <figure class="fig">
+    <svg id="flyFig" viewBox="0 0 660 230" role="img" aria-label="Animated drawing. A cartoon fruit fly with red eyes hovers, then the view zooms into its head to show its brain. Inside, the two mushroom bodies, the fly's learning and memory center, are highlighted in yellow, with Kenyon cells twinkling in their tops.">
+      <g id="flyG"><g transform="translate(330 126) scale(1.4) translate(-330 -112)"><g class="bob">
+        <ellipse class="wing l" cx="296" cy="128" rx="16" ry="44" transform="rotate(28 312 96)"/>
+        <ellipse class="wing r" cx="364" cy="128" rx="16" ry="44" transform="rotate(-28 348 96)"/>
+        <path class="leg" d="M312 92 l-26 -10 l-10 -14 M310 102 l-30 6 l-12 12 M314 112 l-22 22 l-4 18"/>
+        <path class="leg" d="M348 92 l26 -10 l10 -14 M350 102 l30 6 l12 12 M346 112 l22 22 l4 18"/>
+        <ellipse class="out" cx="330" cy="152" rx="20" ry="32"/>
+        <path class="stripe" d="M312 146 h36 v7 h-36 Z M314 162 h32 v6 h-32 Z M318 176 h24 v5 h-24 Z"/>
+        <ellipse class="out" cx="330" cy="102" rx="24" ry="24"/>
+        <circle class="out" cx="330" cy="62" r="20"/>
+        <ellipse class="eye" cx="314" cy="60" rx="11" ry="13"/>
+        <ellipse class="eye" cx="346" cy="60" rx="11" ry="13"/>
+        <circle class="shine" cx="311" cy="55" r="3.2"/><circle class="shine" cx="343" cy="55" r="3.2"/>
+        <ellipse class="blush" cx="322" cy="76" rx="4" ry="2.4"/><ellipse class="blush" cx="338" cy="76" rx="4" ry="2.4"/>
+        <path class="leg" d="M324 44 q-6 -14 -16 -16 M336 44 q6 -14 16 -16"/>
+      </g></g></g>
+      <g id="brainG">
+        <ellipse class="brain" cx="190" cy="122" rx="48" ry="58"/>
+        <ellipse class="brain" cx="470" cy="122" rx="48" ry="58"/>
+        <ellipse class="brain" cx="330" cy="118" rx="122" ry="68"/>
+        <path class="mb" d="M262 92 C268 118 286 136 302 148 M302 148 L304 100 M302 148 L326 150"/>
+        <path class="mb" d="M398 92 C392 118 374 136 358 148 M358 148 L356 100 M358 148 L334 150"/>
+        <circle class="calyx" cx="258" cy="88" r="17"/>
+        <circle class="calyx" cx="402" cy="88" r="17"/>
+        <g id="kcDots"></g>
+        <path class="lead" d="M420 80 C460 64 480 60 506 58"/>
+        <text x="512" y="62" class="lbl">Kenyon cells</text>
+        <path class="lead" d="M362 150 C430 176 470 182 506 182"/>
+        <text x="512" y="186" class="lbl">mushroom body</text>
+        <text x="330" y="222" text-anchor="middle">inside the fly’s brain</text>
+      </g>
+    </svg>
+    <figcaption>Zooming into a fruit fly’s brain: Kenyon cells sit in the mushroom bodies (yellow), the fly’s learning and memory center.</figcaption>
+  </figure>
 
   <h3>LLM accountability for reproductive health information</h3>
   <p>At CNTR, with the <a href="https://www.reimaginationlab.org/">Re/Imagination Lab</a>, I help <a href="https://cntr.brown.edu/reprod-llms">test how ChatGPT, Claude and Gemini answer reproductive-health questions</a> in English and Spanish across different legal environments, designing the prompts that surface where they fail. With <a href="https://michelle-ding.github.io/">Michelle L. Ding</a>, <a href="https://harinisuresh.com/">Harini Suresh</a> and <a href="https://dsi.brown.edu/people/suresh-venkatasubramanian">Suresh Venkatasubramanian</a>.</p>
 
+  <figure class="fig chat-fig" id="chatFig">
+    <p class="sr-only">Animated illustration. The same question, “Is abortion legal where I live, and where can I get care?”, is asked to ChatGPT, Claude and Gemini, in English and Spanish, from Texas and from New York. Each answer is checked for legal accuracy and access, and a grid fills in as each combination is tested.</p>
+    <div class="wrap" aria-hidden="true">
+      <div class="chat">
+        <div class="chat-top"><span class="pill" id="cfModel">ChatGPT</span><span class="pill" id="cfLang">English</span><span class="pill" id="cfLoc">Texas</span></div>
+        <div class="bubble user" id="cfQ"></div>
+        <div class="bubble bot" id="cfA"></div>
+      </div>
+      <div>
+        <table class="grid" id="cfGrid">
+          <thead><tr><th></th><th>ChatGPT</th><th>Claude</th><th>Gemini</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <p class="grid-note">each answer checked for legal accuracy and access</p>
+      </div>
+    </div>
+    <figcaption>One question, many askers: we vary the chatbot, the language and the place, and compare what comes back. (Illustration, not study results.)</figcaption>
+  </figure>
+
   <h3>Mapping the tech ecosystem behind deepfake abuse</h3>
-  <p>I’m a designer and developer on <a href="https://ncii-ecosystem.org/home/">NCII-ECOSYSTEM.ORG</a>, CNTR’s visual storytelling project and living evidence database built from <a href="https://arxiv.org/abs/2602.04759">Ding et al. (2026, ACM EAAMO)</a>. I created and built the interactive story, created the research page, and curated the sources for the evidence database. With <a href="https://michelle-ding.github.io/">Michelle L. Ding</a>, Maja Mishevska, <a href="https://harinisuresh.com/">Harini Suresh</a> and <a href="https://dsi.brown.edu/people/suresh-venkatasubramanian">Suresh Venkatasubramanian</a>.</p>
+  <p>I’m a designer and developer on <a href="https://ncii-ecosystem.org/home/">NCII-ECOSYSTEM.ORG</a>, where my work is making CNTR’s research on the deepfake-abuse ecosystem, <a href="https://arxiv.org/abs/2602.04759">Ding et al. (2026, ACM EAAMO)</a>, understandable to anyone, not just researchers. I built the site, created and built its animated story, created the research page, and curated the sources in its evidence database. With <a href="https://michelle-ding.github.io/">Michelle L. Ding</a>, <a href="https://www.linkedin.com/in/maja-mishevska/">Maja Mishevska</a>, <a href="https://harinisuresh.com/">Harini Suresh</a> and <a href="https://dsi.brown.edu/people/suresh-venkatasubramanian">Suresh Venkatasubramanian</a>.</p>
+
+  <figure class="fig eco">
+    <svg id="ecoFig" viewBox="0 0 660 250" role="img" aria-label="Animated diagram. On the left, a dense research paper, Ding et al. 2026. Its lines are highlighted one by one and translated into NCII-ECOSYSTEM.ORG on the right: first an animated story that walks through each stage of the deepfake-abuse ecosystem, creation, distribution, proliferation and discovery, infrastructural support and monetization, and then a searchable database of more than 100 sources.">
+      <g id="ecoPaper"></g>
+      <text x="96" y="242" text-anchor="middle" class="lbl">RESEARCH PAPER</text>
+      <path class="arrow" d="M192 122 H252 M245 116 L252 122 L245 128"/>
+      <text x="222" y="110" text-anchor="middle" class="lbl" style="font-size:11px">translate</text>
+      <rect class="shadow" x="268" y="16" width="384" height="222" rx="4"/>
+      <rect class="win" x="262" y="10" width="384" height="222" rx="4"/>
+      <line class="winbar" x1="262" y1="38" x2="646" y2="38"/>
+      <circle cx="276" cy="24" r="4.5" fill="none" stroke="var(--link)" stroke-width="1.5"/>
+      <text x="288" y="28" class="lbl">NCII-ECOSYSTEM.ORG</text>
+      <text id="ecoTabStory" x="530" y="28" class="tab">STORY</text>
+      <text id="ecoTabDb" x="580" y="28" class="tab">DATABASE</text>
+      <rect id="ecoTabUl" class="tab-ul" x="530" y="32" width="42" height="2.5"/>
+      <clipPath id="ecoClip"><rect x="264" y="40" width="380" height="190"/></clipPath>
+      <g clip-path="url(#ecoClip)"><g id="ecoStory"></g><g id="ecoDb"></g></g>
+    </svg>
+    <figcaption>From paper to public: I translated the research into an animated story and a searchable database that anyone can explore, no academic background needed.</figcaption>
+  </figure>
+  <p class="cite">Cite the website: Michelle L. Ding, <strong>Haya Bugshan</strong>, and <a href="https://www.linkedin.com/in/maja-mishevska/">Maja Mishevska</a>. “NCII-ECOSYSTEM.ORG.” 2026. <a href="https://ncii-ecosystem.org">https://ncii-ecosystem.org</a></p>
 
   <h2 id="projects">Other fun projects!</h2>
   <ul class="plain">
@@ -289,7 +541,7 @@
     let cur = 'top';
     for (const el of marks) if (el && el.getBoundingClientRect().top < innerHeight * 0.35) cur = el.id;
     if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) cur = marks[marks.length - 1].id;
-    links.forEach(a => a.classList.toggle('on', a.dataset.for === cur));
+    links.forEach(a => { const on = a.dataset.for === cur; a.classList.toggle('on', on); on ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current'); });
   };
 
   if (reduce) { setActive(); addEventListener('scroll', setActive, { passive: true }); return; }
@@ -312,12 +564,10 @@
   });
   const angles = Array.from({ length: N }, (_, i) => -Math.PI / 2 + i * 2 * Math.PI / N);
   const shape = f => angles.map(f);
-  const shapes = [
-    shape(th => rayPoly([[0, -1], [1, 0], [0, 1], [-1, 0]], th)),                              // diamond
-    shape(th => rayPoly(starVerts(5, 0.46), th)),                                              // star
-    shape(th => 0.86 + 0.14 * Math.cos(8 * (th + Math.PI / 2))),                               // flower
-    shape(th => rayPoly(starVerts(4, 0.36), th)),                                              // sparkle
-    shape(() => 0.98)                                                                          // circle
+  const shapes = [   // gentle: a soft scalloped circle that smooths out and back
+    shape(th => 0.93 + 0.05 * Math.cos(8 * (th + Math.PI / 2))),
+    shape(() => 0.97),
+    shape(th => 0.93 + 0.05 * Math.cos(8 * (th + Math.PI / 2) + Math.PI))
   ];
   const morph = document.getElementById('morph');
   const spark = document.querySelector('.side-spark');
@@ -330,7 +580,7 @@
       return `${(50 + 50 * r * Math.cos(th)).toFixed(2)}% ${(50 + 50 * r * Math.sin(th)).toFixed(2)}%`;
     });
     morph.style.clipPath = `polygon(${pts.join(',')})`;
-    if (spark) spark.style.transform = `rotate(${p * 540}deg) scale(${1 + 0.25 * Math.sin(p * Math.PI * 6)})`;
+    if (spark) spark.style.transform = `rotate(${p * 180}deg)`;
   };
 
   const frame = () => {
@@ -340,6 +590,179 @@
     requestAnimationFrame(frame);
   };
   requestAnimationFrame(frame);
+})();
+</script>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const NS = 'http://www.w3.org/2000/svg';
+  const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent && parent.appendChild(e); return e; };
+  let paused = false; const loops = [];
+  const whenVisible = (node, start, stop) => { const L = { start, stop, vis: false }; loops.push(L);
+    new IntersectionObserver(es => es.forEach(e => { L.vis = e.isIntersecting; if (L.vis && !paused) start(); else stop(); }), { threshold: .3 }).observe(node); };
+  const pb = document.getElementById('pauseBtn');
+  if (pb) {
+    if (reduce) pb.hidden = true;
+    pb.addEventListener('click', () => { paused = !paused; pb.setAttribute('aria-pressed', paused); pb.textContent = paused ? 'Play animations' : 'Pause animations';
+      loops.forEach(L => paused ? L.stop() : (L.vis && L.start())); });
+  }
+
+  /* ---------- PupilFM: causal prediction, then probing ---------- */
+  const fig = document.getElementById('pupilFig');
+  if (fig) {
+    const X0 = 12, X1 = 300, N = 160;
+    const f = x => { const t = (x - X0) / (X1 - X0);
+      return 112 - 16 * Math.sin(t * 9) - 8 * Math.sin(t * 23 + 1) - 36 * Math.exp(-((t - .38) ** 2) / .005) - 28 * Math.exp(-((t - .78) ** 2) / .006); };
+    const path = (a, b, off = 0) => { const n = Math.max(2, Math.round((b - a) / 2)); let d = '';
+      for (let i = 0; i <= n; i++) { const x = a + (b - a) * i / n; d += (i ? 'L' : 'M') + x.toFixed(1) + ' ' + (f(x) + off * Math.sin(x / 5)).toFixed(1); } return d; };
+    document.getElementById('pfTrace').setAttribute('d', path(X0, X1));
+    const seen = document.getElementById('pfSeenRect'), fut = document.getElementById('pfFuture'), futL = document.getElementById('pfFutureLbl');
+    const pred = document.getElementById('pfPred'), now = document.getElementById('pfNow');
+    const setNow = x => {
+      seen.setAttribute('width', x);
+      fut.setAttribute('x', x + 1); fut.setAttribute('width', Math.max(0, X1 - x - 1));
+      futL.setAttribute('x', Math.min(X1 - 52, (x + X1) / 2)); futL.style.opacity = X1 - x > 70 ? 1 : 0;
+      pred.setAttribute('d', x < X1 - 4 ? path(x, Math.min(X1, x + 34), 2.5) : '');
+      now.setAttribute('x1', x); now.setAttribute('x2', x);
+    };
+    const cg = document.getElementById('pfCausal'); const n = 6, cs = 11, gx = 398 - n * cs / 2, gy = 66;
+    for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) {
+      const e = el('rect', { x: gx + c * cs + 1, y: gy + r * cs + 1, width: cs - 2, height: cs - 2, rx: 2, class: c <= r ? 'cell' : 'cell off' }, cg);
+      if (c <= r) e.style.animationDelay = (r * .12) + 's';
+    }
+    const eg = document.getElementById('pfEmb'); const shades = [.9, .35, .7, .5, .95, .25, .6, .8];
+    shades.forEach((o, i) => { const e = el('rect', { x: 486, y: 50 + i * 12.5, width: 16, height: 10.5, rx: 2, class: 'emb', fill: 'var(--link)', 'fill-opacity': o }, eg); e.style.transitionDelay = (i * .07) + 's'; });
+    const out = document.getElementById('pfOut');
+    [['cognitive load', .78], ['arousal', .58], ['attention', .68]].forEach(([name, w], i) => {
+      const y = 62 + i * 42;
+      const t = el('text', { x: 532, y: y, class: 'sm' }, out); t.textContent = name;
+      el('rect', { x: 532, y: y + 7, width: 112, height: 9, rx: 4.5, class: 'bar-bg' }, out);
+      const b = el('rect', { x: 532, y: y + 7, width: 112, height: 9, rx: 4.5, class: 'bar' }, out); b.style.setProperty('--w', w); b.style.transitionDelay = (i * .2) + 's';
+    });
+    let timers = [], running = false, raf = 0;
+    const at = (ms, fn) => timers.push(setTimeout(fn, ms));
+    const sweep = (dur) => { const t0 = performance.now(); cancelAnimationFrame(raf);
+      const step = t => { const k = Math.min(1, (t - t0) / dur); setNow(60 + (X1 - 60) * k); if (k < 1) raf = requestAnimationFrame(step); }; raf = requestAnimationFrame(step); };
+    const cycle = () => {
+      fig.classList.remove('p2', 'p3'); fig.classList.add('run'); setNow(60);
+      sweep(4200);
+      at(4400, () => { fig.classList.remove('run'); fig.classList.add('p2'); });
+      at(5300, () => fig.classList.add('p3'));
+      at(10000, cycle);
+    };
+    if (reduce) { setNow(200); fig.classList.add('p2', 'p3'); }
+    else whenVisible(fig, () => { if (!running) { running = true; cycle(); } }, () => { running = false; timers.forEach(clearTimeout); timers = []; cancelAnimationFrame(raf); });
+  }
+
+  /* ---------- Fly: hover, then zoom into the brain ---------- */
+  const fly = document.getElementById('flyFig');
+  if (fly) {
+    const dg = document.getElementById('kcDots'); const cols = ['var(--link)', 'var(--leaf)', '#7FB8AC', 'var(--accent)'];
+    [[258, 88], [402, 88]].forEach(([x, y], side) => { for (let i = 0; i < 10; i++) {
+      const a = i * 2.4 + side, r = 4 + (i % 4) * 2.6;
+      const c = el('circle', { cx: x + Math.cos(a) * r, cy: y + Math.sin(a) * r, r: 2.6, class: 'kcd', fill: cols[i % 4] }, dg);
+      c.style.animationDelay = (i * .17 + side * .3) + 's'; } });
+    let timers = [], running = false;
+    const at = (ms, fn) => timers.push(setTimeout(fn, ms));
+    const cycle = () => { fly.classList.remove('zoom'); at(2600, () => fly.classList.add('zoom')); at(8600, () => fly.classList.remove('zoom')); at(10800, cycle); };
+    if (reduce) fly.classList.add('zoom');
+    else whenVisible(fly, () => { if (!running) { running = true; cycle(); } }, () => { running = false; timers.forEach(clearTimeout); timers = []; });
+  }
+
+  /* ---------- CNTR: one question, many askers ---------- */
+  const cf = document.getElementById('chatFig');
+  if (cf) {
+    const Q = { English: 'Is abortion legal where I live, and where can I get care?', Spanish: '¿Es legal el aborto donde vivo y dónde puedo recibir atención?' };
+    const rows = [['English', 'Texas'], ['Spanish', 'Texas'], ['English', 'New York'], ['Spanish', 'New York']];
+    const models = ['ChatGPT', 'Claude', 'Gemini'];
+    const tbody = cf.querySelector('tbody'); const cells = [];
+    rows.forEach(([lang, loc]) => { const tr = document.createElement('tr'); const th = document.createElement('th'); th.className = 'rh'; th.textContent = (lang === 'English' ? 'EN' : 'ES') + ', ' + loc; tr.appendChild(th);
+      const r = []; models.forEach(() => { const td = document.createElement('td'); tr.appendChild(td); r.push(td); }); cells.push(r); tbody.appendChild(tr); });
+    const $ = id => document.getElementById(id); const qEl = $('cfQ'), aEl = $('cfA');
+    const flash = (id, text) => { const p = $(id); if (p.textContent !== text) { p.textContent = text; p.classList.add('flash'); setTimeout(() => p.classList.remove('flash'), 450); } };
+    let timers = [], running = false, step = 0;
+    const at = (ms, fn) => timers.push(setTimeout(fn, ms));
+    const show = (r, m, animate) => {
+      const [lang, loc] = rows[r];
+      flash('cfModel', models[m]); flash('cfLang', lang === 'English' ? 'English' : 'Español'); flash('cfLoc', loc);
+      cells.flat().forEach(c => c.classList.remove('now')); cells[r][m].classList.add('now');
+      const q = Q[lang]; qEl.textContent = animate ? '' : q; aEl.innerHTML = '';
+      if (!animate) { aEl.innerHTML = '<span class="lines"><b style="width:92%"></b><b style="width:70%"></b><b style="width:80%"></b></span>'; cells[r][m].classList.add('on'); return; }
+      let i = 0; const typer = setInterval(() => { qEl.textContent = q.slice(0, i += 3); if (i >= q.length) clearInterval(typer); }, 28); timers.push(typer);
+      at(900, () => aEl.innerHTML = '<span class="typing"><i></i><i></i><i></i></span>');
+      const w = [[92, 70, 80], [85, 88, 55], [95, 62, 74], [78, 90, 66]][(r + m) % 4];
+      at(1500, () => aEl.innerHTML = '<span class="lines">' + w.map(x => `<b style="width:${x}%"></b>`).join('') + '</span>');
+      at(2100, () => cells[r][m].classList.add('on'));
+    };
+    const tick = () => {
+      if (step === rows.length * models.length) { at(1800, () => { cells.flat().forEach(c => c.classList.remove('on', 'now')); step = 0; tick(); }); return; }
+      const r = Math.floor(step / models.length), m = step % models.length; show(r, m, true); step++; at(2600, tick);
+    };
+    if (reduce) { for (let r = 0; r < rows.length; r++) for (let m = 0; m < models.length; m++) show(r, m, false); }
+    else { show(0, 0, false); cells[0][0].classList.remove('on');
+      whenVisible(cf, () => { if (!running) { running = true; tick(); } }, () => { running = false; timers.forEach(t => { clearTimeout(t); clearInterval(t); }); timers = []; }); }
+  }
+
+  /* ---------- Ecosystem: research paper translated into the public site ---------- */
+  const eco = document.getElementById('ecoFig');
+  if (eco) {
+    const pg = document.getElementById('ecoPaper');
+    el('rect', { class: 'paper', x: 12, y: 10, width: 168, height: 218, rx: 3 }, pg);
+    const t1 = el('text', { x: 22, y: 30, class: 'tiny' }, pg); t1.textContent = 'Ding et al. (2026)';
+    const t2 = el('text', { x: 22, y: 43, class: 'tiny' }, pg); t2.textContent = 'ACM EAAMO';
+    const lines = []; let y = 56;
+    const widths = [148, 140, 146, 120, 148, 136, 142, 104, 146, 138, 128, 148, 90];
+    widths.forEach((w, i) => { if (i === 6) { el('rect', { class: 'pfig', x: 22, y: y, width: 148, height: 34, rx: 2 }, pg);
+        for (let k = 0; k < 5; k++) el('rect', { class: 'pfig', x: 28 + k * 28, y: y + 10, width: 20, height: 14, rx: 2 }, pg); y += 42; }
+      lines.push(el('rect', { class: 'pline', x: 22, y: y, width: w, height: 5, rx: 2 }, pg)); y += 10; });
+
+    const roles = [['CREATION', '#fbd4d0'], ['DISTRIBUTION', '#f9d9b0'], ['PROLIFERATION & DISCOVERY', '#fff3a8'], ['INFRASTRUCTURAL SUPPORT', '#cceef2'], ['MONETIZATION', '#bff5b3']];
+    const story = document.getElementById('ecoStory'), db = document.getElementById('ecoDb');
+    const scenes = roles.map(([name, col]) => {
+      const g = el('g', { class: 'scene', opacity: 0 }, story); g.style.transform = 'translateX(60px)';
+      el('rect', { class: 'shadow', x: 292, y: 58, width: 318, height: 110, rx: 4 }, g);
+      el('rect', { class: 'card', x: 288, y: 54, width: 318, height: 110, rx: 4, fill: col }, g);
+      const t = el('text', { x: 304, y: 80, class: 'lbl' }, g); t.style.fill = '#1F3A24'; t.textContent = name;
+      [270, 240, 280, 180].forEach((w, i) => el('rect', { class: 'sk', x: 304, y: 94 + i * 15, width: w, height: 6, rx: 3 }, g));
+      return g;
+    });
+    const dots = roles.map((_, i) => el('circle', { class: 'dot', cx: 422 + i * 16, cy: 192, r: 4 }, story));
+    const scrollHint = el('text', { x: 454, y: 216, 'text-anchor': 'middle', class: 'tiny' }, story); scrollHint.textContent = 'scroll to continue the story';
+
+    const rows = []; const sh = ['#fbd4d0', '#f9d9b0', '#fff3a8', '#cceef2', '#bff5b3', '#f9d9b0', '#fbd4d0', '#cceef2'];
+    const kinds = ['news', 'paper', 'law', 'report', 'news', 'report', 'paper', 'law'];
+    for (let i = 0; i < 8; i++) {
+      const g = el('g', { class: 'row', opacity: 0 }, db); const yy = 52 + i * 20;
+      el('rect', { class: 'chip', x: 278, y: yy, width: 54, height: 14, rx: 7, fill: sh[i] }, g);
+      const k = el('text', { x: 305, y: yy + 10.5, 'text-anchor': 'middle', class: 'tiny' }, g); k.style.fill = '#1F3A24'; k.textContent = kinds[i];
+      el('rect', { class: 'sk', x: 342, y: yy + 4, width: 150 + (i * 37) % 110, height: 6, rx: 3 }, g);
+      rows.push(g);
+    }
+    const cnt = el('text', { x: 632, y: 222, 'text-anchor': 'end', class: 'cnt', opacity: 0 }, db); cnt.textContent = '100+ sources';
+    const ul = document.getElementById('ecoTabUl');
+    const tab = which => { ul.setAttribute('x', which === 'db' ? 580 : 530); ul.setAttribute('width', which === 'db' ? 64 : 42); };
+
+    let timers = [], running = false;
+    const at = (ms, fn) => timers.push(setTimeout(fn, ms));
+    const reset = () => { lines.forEach(l => l.classList.remove('hl')); scenes.forEach(g => { g.setAttribute('opacity', 0); g.style.transform = 'translateX(60px)'; });
+      dots.forEach(d => d.classList.remove('on')); rows.forEach(r => r.setAttribute('opacity', 0)); cnt.setAttribute('opacity', 0); story.setAttribute('opacity', 1); tab('story'); };
+    const cycle = () => {
+      reset(); let t = 300;
+      scenes.forEach((g, i) => {
+        at(t, () => { [lines[i * 2], lines[i * 2 + 1]].forEach(l => l && l.classList.add('hl')); });
+        at(t + 450, () => { if (i) { scenes[i - 1].setAttribute('opacity', 0); scenes[i - 1].style.transform = 'translateX(-60px)'; }
+          g.setAttribute('opacity', 1); g.style.transform = 'translateX(0)'; dots[i].classList.add('on'); });
+        t += 1500;
+      });
+      at(t + 200, () => { lines.slice(10).forEach(l => l.classList.add('hl')); story.setAttribute('opacity', 0); tab('db'); });
+      rows.forEach((r, i) => at(t + 500 + i * 220, () => r.setAttribute('opacity', 1)));
+      at(t + 500 + 8 * 220, () => cnt.setAttribute('opacity', 1));
+      at(t + 5200, cycle);
+    };
+    if (reduce) { lines.forEach(l => l.classList.add('hl')); scenes[0].setAttribute('opacity', 1); scenes[0].style.transform = 'none'; dots[0].classList.add('on'); }
+    else whenVisible(eco, () => { if (!running) { running = true; cycle(); } }, () => { running = false; timers.forEach(clearTimeout); timers = []; });
+  }
 })();
 </script>
 </body>
