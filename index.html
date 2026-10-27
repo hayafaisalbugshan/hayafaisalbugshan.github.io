@@ -310,6 +310,32 @@
   }
   .contact { margin: 0 0 6px; }
 
+  /* ---------- "More Like Haya Bugshan" stickers ---------- */
+  .side-stickers { margin-top: 30px; padding-right: 8px; }
+  .stickers { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 10px; padding: 6px 0 0 20px; align-items: start; }
+  .sticker { margin: 0; transition: transform .25s cubic-bezier(.3,1.6,.5,1); }
+  .sticker img { display: block; height: var(--h); width: auto; max-width: none; margin: 0 auto; filter: drop-shadow(1px 2px 0 rgba(31,58,36,.18)) drop-shadow(2px 5px 6px rgba(31,58,36,.28)); }
+  .sticker.s1 { --h: 241px; transform: rotate(-4deg); }
+  .sticker.s2 { --h: 230px; transform: rotate(3.5deg); padding-top: 11px; }
+  .sticker figcaption { min-height: 6.6em; }
+  .sticker:hover { transform: rotate(0) scale(1.05); }
+  .sticker figcaption { font: 12.5px/1.3 'IBM Plex Sans', -apple-system, sans-serif; color: var(--deep); margin-top: 6px; text-align: center; }
+  .sticker .tags span { color: #1F3A24; }
+  .sticker .who { display: block; font-family: 'PT Mono', ui-monospace, Menlo, monospace; font-size: 11.5px; letter-spacing: .02em; margin-bottom: 5px; }
+  .sticker .who b { display: block; font: 600 15px/1.2 var(--serif); letter-spacing: 0; color: var(--link); margin-bottom: 2px; }
+  .sticker .tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; }
+  .sticker .tags span { padding: 1px 7px; border-radius: 999px; border: 1.5px solid #1F3A24; }
+  .sticker .tags span:nth-child(5n+1) { background: #bff5b3; } .sticker .tags span:nth-child(5n+2) { background: #fff3a8; }
+  .sticker .tags span:nth-child(5n+3) { background: #cceef2; } .sticker .tags span:nth-child(5n+4) { background: #fbd4d0; } .sticker .tags span:nth-child(5n) { background: #f9d9b0; }
+  @media (prefers-reduced-motion: reduce) { .sticker { transition: none; } }
+  .main-stickers { display: none; }
+  @media (max-width: 1080px) {
+    .side .side-stickers { display: none; }
+    .main-stickers { display: block; margin-top: 48px; }
+    .main-stickers h2.side-h { padding-left: 0; }
+    .stickers { padding-left: 0; max-width: 360px; }
+  }
+
   /* ---------- night mode toggle ---------- */
   .controls { position: fixed; top: 18px; right: 22px; z-index: 20; display: flex; flex-direction: column; align-items: stretch; gap: 10px; }
   .theme, .pause { display: inline-flex; align-items: center; gap: 8px; margin: 0; font-family: var(--serif); font-size: 1rem; line-height: 1.2; color: var(--ink); background: var(--card); border: 1.5px solid var(--rule); border-radius: 999px; padding: 6px 14px 6px 11px; cursor: pointer; box-shadow: 3px 3px 0 var(--leaf); }
@@ -427,6 +453,21 @@
       <li><span class="d">Oct 2026</span>Featured in <a href="https://www.brown.edu/news/2026-10-08/carney-quantitative-scholars">Brown News</a> as a Carney Quantitative Scholar.</li>
       <li><span class="d">Aug 2026</span>Presented PupilFM at the <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:826d0f2a-bc63-4691-9763-340848e2b3d3">Brown Summer Research Symposium</a>.</li>
     </ul>
+  </section>
+  <section class="side-stickers" aria-labelledby="bros-h">
+    <h2 id="bros-h" class="side-h">More Like Haya Bugshan</h2>
+    <div class="stickers">
+      <figure class="sticker s1">
+        <img src="sticker-older.png" alt="Sticker of Haya’s brother Abood grinning in a puffer jacket, holding up a fish he caught and a fishing rod" width="544" height="760" loading="lazy">
+        <figcaption><span class="who"><b>Abood</b>high school junior</span>
+          <span class="tags"><span>lacrosse</span><span>swimming</span><span>jiu-jitsu</span><span>golf</span><span>fishing</span></span></figcaption>
+      </figure>
+      <figure class="sticker s2">
+        <img src="sticker-younger.png" alt="Sticker of Haya’s brother Yahya smiling wide in his jiu-jitsu gi, holding up a dragon book" width="373" height="700" loading="lazy">
+        <figcaption><span class="who"><b>Yahya</b>elementary schooler</span>
+          <span class="tags"><span>future Dr. Wu</span><span>dinosaurs</span></span></figcaption>
+      </figure>
+    </div>
   </section>
 </aside>
 
@@ -576,6 +617,22 @@
   <h2 id="contact">Contact</h2>
   <p class="contact">haya_bugshan [at] brown [dot] edu</p>
   <p><a href="https://github.com/hayafaisalbugshan">GitHub</a>&nbsp;&nbsp; <a href="https://www.linkedin.com/in/hayabugshan">LinkedIn</a>&nbsp;&nbsp; <a href="https://hayabugshan.substack.com/">Substack</a>&nbsp;&nbsp; <a href="resume.pdf">CV</a></p>
+
+  <section class="side-stickers main-stickers" aria-labelledby="bros-h2">
+    <h2 id="bros-h2" class="side-h">More Like Haya Bugshan</h2>
+    <div class="stickers">
+      <figure class="sticker s1">
+        <img src="sticker-older.png" alt="Sticker of Haya’s brother Abood grinning in a puffer jacket, holding up a fish he caught and a fishing rod" width="544" height="760" loading="lazy">
+        <figcaption><span class="who"><b>Abood</b>high school junior</span>
+          <span class="tags"><span>lacrosse</span><span>swimming</span><span>jiu-jitsu</span><span>golf</span><span>fishing</span></span></figcaption>
+      </figure>
+      <figure class="sticker s2">
+        <img src="sticker-younger.png" alt="Sticker of Haya’s brother Yahya smiling wide in his jiu-jitsu gi, holding up a dragon book" width="373" height="700" loading="lazy">
+        <figcaption><span class="who"><b>Yahya</b>elementary schooler</span>
+          <span class="tags"><span>future Dr. Wu</span><span>dinosaurs</span></span></figcaption>
+      </figure>
+    </div>
+  </section>
 
 </main>
 
