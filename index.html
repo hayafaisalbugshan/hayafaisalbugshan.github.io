@@ -154,9 +154,6 @@
   @keyframes fire { 0%, 100% { fill: var(--leaf); } 50% { fill: var(--accent); } }
 
   /* Ecosystem: paper -> public site, styled like ncii-ecosystem.org */
-  .fig.eco { --ep: var(--link); --ed: var(--deep); background: var(--card); border: 2px solid var(--ep); border-radius: 4px; padding: 0; box-shadow: 6px 6px 0 var(--shadow); overflow: hidden; margin-right: 6px; }
-  .eco svg { padding: 14px 14px 4px; }
-  .eco figcaption { font: 14px/1.45 'IBM Plex Sans', -apple-system, sans-serif; font-style: normal; color: var(--ed); padding: 0 16px 14px; margin: 0; }
   #ecoFig text { font-family: 'PT Mono', ui-monospace, Menlo, monospace; fill: var(--deep); }
   #ecoFig .paper { fill: var(--card); stroke: var(--muted); stroke-width: 1.2; }
   #ecoFig .pline { fill: var(--faint); transition: fill .3s; }
@@ -208,6 +205,57 @@
   @keyframes twinkle { 50% { opacity: .25; } }
   #flyFig .lead { stroke: var(--muted); stroke-width: 1.2; fill: none; }
   @media (prefers-reduced-motion: reduce) { #flyFig .wing, #flyG .bob, #flyFig .kcd { animation: none; } }
+
+
+  /* ---------- shared window look for every figure (matches NCII-ECOSYSTEM.ORG) ---------- */
+  .fig.win { --pd: #1F3A24; background: var(--card); border: 2px solid var(--link); border-radius: 4px; padding: 0; box-shadow: 6px 6px 0 var(--shadow); overflow: hidden; margin: 22px 6px 18px 0; }
+  .win .bar-top { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-bottom: 2px solid var(--link); font: 12.5px/1 'PT Mono', ui-monospace, Menlo, monospace; color: var(--link); letter-spacing: .03em; }
+  .win .bar-top i { width: 9px; height: 9px; border: 1.5px solid var(--link); border-radius: 50%; flex: none; }
+  .win .bar-top span { margin-left: auto; opacity: .8; text-align: right; }
+  .win svg { padding: 14px 14px 4px; }
+  .win figcaption { font: 14px/1.45 'IBM Plex Sans', -apple-system, sans-serif; font-style: normal; color: var(--deep); padding: 4px 16px 14px; margin: 0; }
+  .win svg text { font-family: 'PT Mono', ui-monospace, Menlo, monospace; fill: var(--deep); }
+
+  /* PupilFM, window style */
+  #pupilFig .sm { font-size: 13px; } #pupilFig .xs { font-size: 11.5px; font-style: normal; fill: var(--muted); } #pupilFig .ttl { font-size: 14px; fill: var(--pd); }
+  #pupilFig .trace { stroke: var(--deep); }
+  #pupilFig .future { stroke: var(--deep); stroke-width: 1.5; }
+  #pupilFig .box { fill: #cceef2; stroke: var(--pd); stroke-width: 2; }
+  #pupilFig .boxsh { fill: var(--shadow); }
+  #pupilFig .cell { fill: #8fc7a0; } #pupilFig .cell.off { fill: none; stroke: var(--pd); stroke-opacity: .35; }
+  #pupilFig .emb { stroke: var(--pd); stroke-width: 1; }
+  #pupilFig .bar-bg { fill: var(--card); stroke: var(--deep); stroke-width: 1.2; }
+  #pupilFig .bar { fill: #bff5b3; stroke: var(--pd); stroke-width: 1.2; }
+  @keyframes fire { 0%, 100% { fill: #8fc7a0; } 50% { fill: var(--sun); } }
+
+  /* Fly, window style */
+  #flyFig text { font-size: 13px; font-family: 'PT Mono', ui-monospace, Menlo, monospace; fill: var(--muted); } #flyFig .lbl { font-size: 13px; fill: var(--deep); }
+  #flyFig .out { fill: #fff; stroke: var(--pd); }
+  #flyFig .leg { stroke: var(--deep); }
+  #flyFig .stripe { fill: #bff5b3; stroke: var(--pd); stroke-width: 1; }
+  #flyFig .eye { stroke: var(--pd); }
+  #flyFig .wing { stroke: var(--pd); }
+  #flyFig .brain { fill: #fbd4d0; stroke: var(--pd); }
+  #flyFig .brainsh { fill: var(--shadow); }
+  #flyFig .mb { stroke: #E2B22C; }
+  #flyFig .calyx { fill: #fff3a8; stroke: var(--pd); }
+  #flyFig .lead { stroke: var(--deep); }
+
+  /* Chatbot, window style */
+  .win .chat { background: var(--card); border: 2px solid var(--pd); border-radius: 4px; box-shadow: 4px 4px 0 var(--shadow); }
+  .win .pill { font: 11.5px/1.5 'PT Mono', ui-monospace, Menlo, monospace; border: 1.5px solid var(--pd); color: var(--pd); background: #fff; }
+  .win .pill.flash { background: #fff3a8; color: var(--pd); border-color: var(--pd); }
+  .win .bubble { font-family: 'IBM Plex Sans', -apple-system, sans-serif; font-size: .9rem; border: 1.5px solid var(--pd); }
+  .win .bubble.user { background: #bff5b3; color: var(--pd); }
+  .win .bubble.bot { background: #fff; }
+  .win .lines b { background: var(--pd); opacity: .2; }
+  .win .typing i { background: var(--pd); }
+  .win .grid { font-family: 'PT Mono', ui-monospace, Menlo, monospace; font-size: .72rem; color: var(--deep); }
+  .win .grid td { background: var(--card); border: 1.5px solid var(--faint); border-radius: 4px; }
+  .win .grid td.on { background: #bff5b3; border-color: var(--pd); }
+  .win .grid td.now { box-shadow: 0 0 0 2px var(--accent) inset; }
+  .win .grid-note { font-family: 'IBM Plex Sans', -apple-system, sans-serif; color: var(--muted); }
+  .win .chat-fig .wrap, .win.chat-fig .wrap { padding: 14px 14px 6px; }
 
   /* CNTR chatbot */
   .chat-fig .wrap { display: grid; grid-template-columns: 1.35fr 1fr; gap: 16px; align-items: start; }
@@ -397,7 +445,8 @@
 
   <h3>Foundation models for pupil dynamics</h3>
   <p>In the <a href="https://research.clps.brown.edu/songlab/people.html">Perception, Action &amp; Cognition Lab</a>, with <a href="https://copsy.brown.edu/people/joo-hyun-song">Joo-Hyun Song</a> and <a href="https://vivo.brown.edu/display/jritt">Jason Ritt</a>, I built <strong>PupilFM</strong>, a pupillometry foundation model pretrained on 1,000+ hours of recordings from 2,000+ people. I’m asking whether it learns general pupil dynamics that reveal cognitive load, arousal and attention on tasks it has never seen. <a href="https://www.brown.edu/news/2026-10-08/carney-quantitative-scholars">Featured in Brown News</a>.</p>
-  <figure class="fig">
+  <figure class="fig win">
+    <div class="bar-top" aria-hidden="true"><i></i>PUPILFM<span>CAUSAL PRETRAINING</span></div>
     <svg id="pupilFig" viewBox="0 0 660 210" role="img" aria-label="Animated diagram. A pupil-size recording is read from left to right; everything after the present moment is masked, and PupilFM predicts what comes next using causal attention. Its embedding is then passed to a linear probe that predicts cognitive load, arousal and attention.">
       <defs><pattern id="pfHatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" class="hatch"/></pattern>
         <clipPath id="pfSeen"><rect id="pfSeenRect" x="0" y="0" width="0" height="210"/></clipPath></defs>
@@ -410,7 +459,8 @@
       <path id="pfPred" class="pred"/>
       <line id="pfNow" class="now" x1="60" y1="28" x2="60" y2="158"/>
       <path class="arrow" d="M308 95 H336 M329 89 L336 95 L329 101"/>
-      <rect class="box" x="342" y="36" width="112" height="120" rx="14"/>
+      <rect class="boxsh" x="347" y="41" width="112" height="120" rx="6"/>
+      <rect class="box" x="342" y="36" width="112" height="120" rx="6"/>
       <text x="398" y="56" text-anchor="middle" class="ttl">PupilFM</text>
       <g id="pfCausal"></g>
       <text x="398" y="176" text-anchor="middle" class="xs">causal attention</text>
@@ -428,7 +478,8 @@
   <h3>Kenyon cell diversity in the fruit fly brain</h3>
   <p>In the <a href="https://www.kaunlab.com/">Kaun Lab</a>, with <a href="https://www.linkedin.com/in/marygrace-trousdell/">MaryGrace Trousdell</a>, I use machine learning to study Kenyon cells, the neurons at the heart of the fruit fly’s learning and memory center, and what makes their different types distinct. More to share once the work is published.</p>
 
-  <figure class="fig">
+  <figure class="fig win">
+    <div class="bar-top" aria-hidden="true"><i></i>KAUN LAB<span>FRUIT FLY BRAIN</span></div>
     <svg id="flyFig" viewBox="0 0 660 230" role="img" aria-label="Animated drawing. A cartoon fruit fly with red eyes hovers, then the view zooms into its head to show its brain. Inside, the two mushroom bodies, the fly's learning and memory center, are highlighted in yellow, with Kenyon cells twinkling in their tops.">
       <g id="flyG"><g transform="translate(330 126) scale(1.4) translate(-330 -112)"><g class="bob">
         <ellipse class="wing l" cx="296" cy="128" rx="16" ry="44" transform="rotate(28 312 96)"/>
@@ -446,6 +497,7 @@
         <path class="leg" d="M324 44 q-6 -14 -16 -16 M336 44 q6 -14 16 -16"/>
       </g></g></g>
       <g id="brainG">
+        <g transform="translate(5 5)"><ellipse class="brainsh" cx="190" cy="122" rx="48" ry="58"/><ellipse class="brainsh" cx="470" cy="122" rx="48" ry="58"/><ellipse class="brainsh" cx="330" cy="118" rx="122" ry="68"/></g>
         <ellipse class="brain" cx="190" cy="122" rx="48" ry="58"/>
         <ellipse class="brain" cx="470" cy="122" rx="48" ry="58"/>
         <ellipse class="brain" cx="330" cy="118" rx="122" ry="68"/>
@@ -467,7 +519,8 @@
   <h3>LLM accountability for reproductive health information</h3>
   <p>At CNTR, with the <a href="https://www.reimaginationlab.org/">Re/Imagination Lab</a>, I help <a href="https://cntr.brown.edu/reprod-llms">test how ChatGPT, Claude and Gemini answer reproductive-health questions</a> in English and Spanish across different legal environments, designing the prompts that surface where they fail. With <a href="https://michelle-ding.github.io/">Michelle L. Ding</a>, <a href="https://harinisuresh.com/">Harini Suresh</a> and <a href="https://dsi.brown.edu/people/suresh-venkatasubramanian">Suresh Venkatasubramanian</a>.</p>
 
-  <figure class="fig chat-fig" id="chatFig">
+  <figure class="fig win chat-fig" id="chatFig">
+    <div class="bar-top" aria-hidden="true"><i></i>CNTR<span>LEGAL ACCURACY &amp; ACCESS</span></div>
     <p class="sr-only">Animated illustration. The same question, “Is abortion legal where I live, and where can I get care?”, is asked to ChatGPT, Claude and Gemini, in English and Spanish, from Texas and from New York. Each answer is checked for legal accuracy and access, and a grid fills in as each combination is tested.</p>
     <div class="wrap" aria-hidden="true">
       <div class="chat">
@@ -489,7 +542,7 @@
   <h3>Mapping the tech ecosystem behind deepfake abuse</h3>
   <p>I’m a designer and developer on <a href="https://ncii-ecosystem.org/home/">NCII-ECOSYSTEM.ORG</a>, where my work is making CNTR’s research on the deepfake-abuse ecosystem, <a href="https://arxiv.org/abs/2602.04759">Ding et al. (2026, ACM EAAMO)</a>, understandable to anyone, not just researchers. I built the site, created and built its animated story, created the research page, and curated the sources in its evidence database. With <a href="https://michelle-ding.github.io/">Michelle L. Ding</a>, <a href="https://www.linkedin.com/in/maja-mishevska/">Maja Mishevska</a>, <a href="https://harinisuresh.com/">Harini Suresh</a> and <a href="https://dsi.brown.edu/people/suresh-venkatasubramanian">Suresh Venkatasubramanian</a>.</p>
 
-  <figure class="fig eco">
+  <figure class="fig win eco">
     <svg id="ecoFig" viewBox="0 0 660 250" role="img" aria-label="Animated diagram. On the left, a dense research paper, Ding et al. 2026. Its lines are highlighted one by one and translated into NCII-ECOSYSTEM.ORG on the right: first an animated story that walks through each stage of the deepfake-abuse ecosystem, creation, distribution, proliferation and discovery, infrastructural support and monetization, and then a searchable database of more than 100 sources.">
       <g id="ecoPaper"></g>
       <text x="96" y="242" text-anchor="middle" class="lbl">RESEARCH PAPER</text>
@@ -632,7 +685,7 @@
       if (c <= r) e.style.animationDelay = (r * .12) + 's';
     }
     const eg = document.getElementById('pfEmb'); const shades = [.9, .35, .7, .5, .95, .25, .6, .8];
-    shades.forEach((o, i) => { const e = el('rect', { x: 486, y: 50 + i * 12.5, width: 16, height: 10.5, rx: 2, class: 'emb', fill: 'var(--link)', 'fill-opacity': o }, eg); e.style.transitionDelay = (i * .07) + 's'; });
+    shades.forEach((o, i) => { const e = el('rect', { x: 486, y: 50 + i * 12.5, width: 16, height: 10.5, rx: 2, class: 'emb', fill: ['#bff5b3','#fff3a8','#cceef2','#fbd4d0','#f9d9b0','#bff5b3','#cceef2','#fff3a8'][i] }, eg); e.style.transitionDelay = (i * .07) + 's'; });
     const out = document.getElementById('pfOut');
     [['cognitive load', .78], ['arousal', .58], ['attention', .68]].forEach(([name, w], i) => {
       const y = 62 + i * 42;
