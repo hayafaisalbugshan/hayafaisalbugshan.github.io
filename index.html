@@ -311,10 +311,14 @@
   .contact { margin: 0 0 6px; }
 
   /* ---------- night mode toggle ---------- */
-  .theme { position: fixed; top: 18px; right: 22px; z-index: 20; display: inline-flex; align-items: center; gap: 7px; font: inherit; font-size: .92rem; color: var(--ink); background: var(--card); border: 1.5px solid var(--rule); border-radius: 999px; padding: 5px 13px 5px 10px; cursor: pointer; box-shadow: 3px 3px 0 var(--leaf); }
-  .theme:hover { border-color: var(--link); }
-  .theme svg { width: 17px; height: 17px; fill: var(--accent); }
-  @media (max-width: 1080px) { .theme { position: absolute; top: 22px; } }
+  .controls { position: fixed; top: 18px; right: 22px; z-index: 20; display: flex; flex-direction: column; align-items: stretch; gap: 10px; }
+  .theme, .pause { display: inline-flex; align-items: center; gap: 8px; margin: 0; font-family: var(--serif); font-size: 1rem; line-height: 1.2; color: var(--ink); background: var(--card); border: 1.5px solid var(--rule); border-radius: 999px; padding: 6px 14px 6px 11px; cursor: pointer; box-shadow: 3px 3px 0 var(--leaf); }
+  .theme:hover, .pause:hover { border-color: var(--link); color: var(--link); }
+  .theme svg, .pause svg { width: 16px; height: 16px; fill: var(--accent); flex: none; }
+  .pause[aria-pressed="true"] { color: var(--paper); background: var(--link); border-color: var(--link); }
+  .pause[aria-pressed="true"] svg { fill: var(--sun); }
+  @media (max-width: 1080px) { .controls { position: absolute; top: 22px; right: 16px; } }
+  @media (max-width: 520px) { .theme, .pause { font-size: .9rem; padding: 5px 11px 5px 9px; } }
 
   /* ---------- accessibility ---------- */
   .skip { position: absolute; left: 16px; top: -60px; z-index: 50; background: var(--link); color: var(--paper); padding: 8px 14px; border-radius: 6px; text-decoration: none; }
@@ -323,9 +327,6 @@
   h1.name-h { margin: 0; font: inherit; }
   main:focus { outline: none; }
   body, svg text, .fig, .chat, .grid { -webkit-user-select: text; user-select: text; }
-  .pause { margin: 16px 0 0 20px; font: inherit; font-size: .9rem; color: var(--muted); background: none; border: 1px solid var(--rule); border-radius: 999px; padding: 3px 12px; cursor: pointer; }
-  .pause:hover { color: var(--link); border-color: var(--link); }
-  .pause[aria-pressed="true"] { color: var(--paper); background: var(--link); border-color: var(--link); }
   footer { max-width: 38rem; margin: 64px 0 0 max(400px, calc(50% - 15rem)); padding: 20px 16px 64px 0; border-top: 1px solid var(--rule); color: var(--muted); font-size: .95rem; }
 
   .morph { width: 310px; height: 310px; margin: 20px 0 0; clip-path: circle(48.5% at 50% 50%); will-change: clip-path; }
@@ -353,7 +354,6 @@
   @media (max-width: 1080px) {
     .side { position: static; width: auto; padding: 24px 16px 0; max-width: 38rem; margin: 0 auto; }
     .toc, .side-spark { display: none; }
-    .pause { margin-left: 0; }
     .side { overflow: visible; }
     .side-news { margin-top: 28px; }
     h2.side-h, ul.news { padding-left: 0; }
@@ -381,7 +381,10 @@
 <body>
 
 <a class="skip" href="#top">Skip to main content</a>
+<div class="controls">
 <button class="theme" id="themeBtn" type="button" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path id="themeIcon" d=""/></svg><span id="themeTxt">Night mode</span></button>
+<button class="pause" id="pauseBtn" type="button" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg><span id="pauseTxt">Pause animations</span></button>
+</div>
 <script>
 (() => {
   const root = document.documentElement;
@@ -416,7 +419,6 @@
     <a href="#projects" data-for="projects">Projects</a>
     <a href="#contact" data-for="contact">Contact</a>
   </nav>
-  <button class="pause" id="pauseBtn" type="button" aria-pressed="false">Pause animations</button>
   <section class="side-news" aria-labelledby="news-h">
     <h2 id="news-h" class="side-h">News</h2>
     <ul class="news">
@@ -657,7 +659,7 @@
   const pb = document.getElementById('pauseBtn');
   if (pb) {
     if (reduce) pb.hidden = true;
-    pb.addEventListener('click', () => { paused = !paused; pb.setAttribute('aria-pressed', paused); pb.textContent = paused ? 'Play animations' : 'Pause animations';
+    pb.addEventListener('click', () => { paused = !paused; pb.setAttribute('aria-pressed', paused); document.getElementById('pauseTxt').textContent = paused ? 'Play animations' : 'Pause animations'; pb.querySelector('path').setAttribute('d', paused ? 'M8 5v14l11-7z' : 'M7 5h3.5v14H7zM13.5 5H17v14h-3.5z');
       loops.forEach(L => paused ? L.stop() : (L.vis && L.start())); });
   }
 
