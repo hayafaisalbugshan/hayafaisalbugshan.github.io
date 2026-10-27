@@ -339,6 +339,25 @@
     .stickers { padding-left: 0; max-width: 360px; }
   }
 
+
+  /* ---------- project cards ---------- */
+  .proj { background: none; border: 2px dashed var(--leaf); border-radius: 12px; padding: 20px 22px 8px; margin: 0 0 26px; }
+  .proj h3 { margin-top: 0; }
+  .proj .fig.win { margin-right: 6px; }
+  ul.fun-cards { list-style: none; padding: 0; display: grid; gap: 14px; }
+  ul.fun-cards li { background: var(--card); border: 1.5px solid var(--rule); border-radius: 12px; padding: 14px 18px; margin: 0; box-shadow: 4px 4px 0 var(--leaf); }
+  @media (max-width: 520px) { .proj { padding: 16px 14px 6px; } .proj .fig.win { margin-right: 4px; } }
+
+  /* ---------- section filter ---------- */
+  .pane[hidden] { display: none !important; }
+  .filter-note { margin-top: 40px; color: var(--muted); font-size: 1rem; }
+  .filtered main h2:first-of-type { margin-top: 0; }
+
+  /* ---------- remove animations ---------- */
+  .no-anim .fig { display: none !important; }
+  .no-anim *, .no-anim *::before, .no-anim *::after { animation: none !important; transition: none !important; }
+  .no-anim h2::after { transform: none !important; }
+
   /* ---------- night mode toggle ---------- */
   .controls { position: fixed; top: 18px; right: 22px; z-index: 20; display: flex; flex-direction: column; align-items: stretch; gap: 10px; }
   .theme, .pause { display: inline-flex; align-items: center; gap: 8px; margin: 0; font-family: var(--serif); font-size: 1rem; line-height: 1.2; color: var(--ink); background: var(--card); border: 1.5px solid var(--rule); border-radius: 999px; padding: 6px 14px 6px 11px; cursor: pointer; box-shadow: 3px 3px 0 var(--leaf); }
@@ -346,6 +365,8 @@
   .theme svg, .pause svg { width: 16px; height: 16px; fill: var(--accent); flex: none; }
   .pause[aria-pressed="true"] { color: var(--paper); background: var(--link); border-color: var(--link); }
   .pause[aria-pressed="true"] svg { fill: var(--sun); }
+  .pause svg path { stroke: var(--accent); }
+  .pause[aria-pressed="true"] svg path { stroke: none; fill: var(--sun); }
   @media (max-width: 1080px) { .controls { position: absolute; top: 22px; right: 16px; } }
   @media (max-width: 520px) { .theme, .pause { font-size: .9rem; padding: 5px 11px 5px 9px; } }
 
@@ -382,7 +403,11 @@
   @media (min-width: 1081px) and (max-height: 820px) { .side { top: 32px; } .morph { width: 240px; height: 240px; } .side-spark { top: 100px; left: 232px; } }
   @media (max-width: 1080px) {
     .side { position: static; width: auto; padding: 24px 16px 0; max-width: 38rem; margin: 0 auto; }
-    .toc, .side-spark { display: none; }
+    .side-spark { display: none; }
+    .toc { flex-direction: row; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .toc a { padding: 4px 13px; border: 1.5px solid var(--rule); border-radius: 999px; background: var(--card); }
+    .toc a::before { display: none; }
+    .toc a.on { background: var(--link); border-color: var(--link); color: var(--paper); }
     .side { overflow: visible; }
     .side-news { margin-top: 28px; }
     h2.side-h, ul.news { padding-left: 0; }
@@ -412,7 +437,7 @@
 <a class="skip" href="#top">Skip to main content</a>
 <div class="controls">
 <button class="theme" id="themeBtn" type="button" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path id="themeIcon" d=""/></svg><span id="themeTxt">Night mode</span></button>
-<button class="pause" id="pauseBtn" type="button" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg><span id="pauseTxt">Pause animations</span></button>
+<button class="pause" id="pauseBtn" type="button" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path id="pauseIcon" d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" fill="none"/></svg><span id="pauseTxt">Remove animations</span></button>
 </div>
 <script>
 (() => {
@@ -423,6 +448,7 @@
   const systemDark = matchMedia('(prefers-color-scheme: dark)');
   const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : systemDark.matches;
   if (saved === 'dark' || saved === 'light') root.dataset.theme = saved;
+  try { if (localStorage.getItem('anim') === 'off') root.classList.add('no-anim'); } catch (e) {}
   const btn = document.getElementById('themeBtn'), icon = document.getElementById('themeIcon'), txt = document.getElementById('themeTxt');
   const meta = document.querySelector('meta[name="theme-color"]');
   const paint = () => { const d = isDark(); btn.setAttribute('aria-pressed', d); txt.textContent = d ? 'Day mode' : 'Night mode';
@@ -442,7 +468,7 @@
   </a></h1>
   <figure class="morph" id="morph"><img src="profile.jpg" alt="Haya smiling, in a varsity jacket" width="562" height="562"></figure>
   <svg class="side-spark" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 0 C13 8 16 11 24 12 C16 13 13 16 12 24 C11 16 8 13 0 12 C8 11 11 8 12 0 Z" fill="currentColor"/></svg>
-  <nav class="toc" aria-label="On this page">
+  <nav class="toc" aria-label="Show a section of this page">
     <a href="#top" data-for="top">Hello</a>
     <a href="#research" data-for="research">Research</a>
     <a href="#projects" data-for="projects">Projects</a>
@@ -479,16 +505,22 @@
 </svg>
 
 <main id="top" tabindex="-1">
+  <p class="sr-only" id="filterStatus" role="status" aria-live="polite"></p>
+  <section class="pane" data-pane="top" aria-label="Introduction">
 
   <p class="hi">Hi! I’m Haya, a computational neuroscientist in training. I build models that read what the brain is doing from the signals it leaves behind, like a pupil changing size or a wave of EEG, and I work to hold AI systems accountable to the people they affect.</p>
 
   <p>I’m an undergraduate at <a href="https://www.brown.edu/">Brown University</a> (class of 2028), concentrating in Computational Neuroscience and Applied Mathematics, and a 2026 <a href="https://www.brown.edu/news/2026-10-08/carney-quantitative-scholars">Carney Quantitative Scholar</a>. I work across the <a href="https://research.clps.brown.edu/songlab/people.html">Perception, Action &amp; Cognition Lab</a>, the <a href="https://sites.brown.edu/cpl/">Watanabe Lab</a>, and Brown’s <a href="https://cntr.brown.edu/">Center for Technological Responsibility</a>. I’m from Jeddah, Saudi Arabia, and I’m working toward a PhD in computational neuroscience and machine learning.</p>
 
   <p>I came to Brown planning to study mathematics and philosophy. The questions stayed the same, about minds and what we can know about them; the tools changed. I also write about all of it on my Substack, <a href="https://hayabugshan.substack.com/">Tarjama</a>.</p>
+  </section>
 
-
+  <section class="pane" data-pane="research" aria-labelledby="research">
   <h2 id="research">Research</h2>
 
+
+
+  <article class="proj">
   <h3>Foundation models for pupil dynamics</h3>
   <p>In the <a href="https://research.clps.brown.edu/songlab/people.html">Perception, Action &amp; Cognition Lab</a>, with <a href="https://copsy.brown.edu/people/joo-hyun-song">Joo-Hyun Song</a> and <a href="https://vivo.brown.edu/display/jritt">Jason Ritt</a>, I built <strong>PupilFM</strong>, a pupillometry foundation model pretrained on 1,000+ hours of recordings from 2,000+ people. I’m asking whether it learns general pupil dynamics that reveal cognitive load, arousal and attention on tasks it has never seen. <a href="https://www.brown.edu/news/2026-10-08/carney-quantitative-scholars">Featured in Brown News</a>.</p>
   <figure class="fig win">
@@ -520,7 +552,9 @@
     <figcaption>Causal masking: the model only ever sees the past and learns to predict what comes next. Then we probe its embeddings to see how well they predict cognitive states.</figcaption>
   </figure>
   <p class="cite">Presented at the <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:826d0f2a-bc63-4691-9763-340848e2b3d3">Brown University Summer Research Symposium</a>, 2026: <em>Learning Task-General Signals of Cognition from Pupil Dynamics via a Pupillometry Foundation Model.</em> <strong>H. Bugshan</strong>, T. Nguyen, J. Lader, J. Song, J. Ritt.</p>
+  </article>
 
+  <article class="proj">
   <h3>Kenyon cell diversity in the fruit fly brain</h3>
   <p>In the <a href="https://www.kaunlab.com/">Kaun Lab</a>, with <a href="https://www.linkedin.com/in/marygrace-trousdell/">MaryGrace Trousdell</a>, I use machine learning to study Kenyon cells, the neurons at the heart of the fruit fly’s learning and memory center, and what makes their different types distinct. More to share once the work is published.</p>
 
@@ -561,7 +595,9 @@
     </svg>
     <figcaption>Zooming into a fruit fly’s brain: Kenyon cells sit in the mushroom bodies (yellow), the fly’s learning and memory center.</figcaption>
   </figure>
+  </article>
 
+  <article class="proj">
   <h3>LLM accountability for reproductive health information</h3>
   <p>At CNTR, with the <a href="https://www.reimaginationlab.org/">Re/Imagination Lab</a>, I help <a href="https://cntr.brown.edu/reprod-llms">test how ChatGPT, Claude and Gemini answer reproductive-health questions</a> in English and Spanish across different legal environments, designing the prompts that surface where they fail. With <a href="https://michelle-ding.github.io/">Michelle L. Ding</a>, <a href="https://harinisuresh.com/">Harini Suresh</a> and <a href="https://dsi.brown.edu/people/suresh-venkatasubramanian">Suresh Venkatasubramanian</a>.</p>
 
@@ -584,7 +620,9 @@
     </div>
     <figcaption>One question, many askers: we vary the chatbot, the language and the place, and compare what comes back. (Illustration, not study results.)</figcaption>
   </figure>
+  </article>
 
+  <article class="proj">
   <h3>Mapping the tech ecosystem behind deepfake abuse</h3>
   <p>I’m a designer and developer on <a href="https://ncii-ecosystem.org/home/">NCII-ECOSYSTEM.ORG</a>, where my work is making CNTR’s research on the deepfake-abuse ecosystem, <a href="https://arxiv.org/abs/2602.04759">Ding et al. (2026, ACM EAAMO)</a>, understandable to anyone, not just researchers. I built the site, created and built its animated story, created the research page, and curated the sources in its evidence database. With <a href="https://michelle-ding.github.io/">Michelle L. Ding</a>, <a href="https://www.linkedin.com/in/maja-mishevska/">Maja Mishevska</a>, <a href="https://harinisuresh.com/">Harini Suresh</a> and <a href="https://dsi.brown.edu/people/suresh-venkatasubramanian">Suresh Venkatasubramanian</a>.</p>
 
@@ -608,19 +646,25 @@
     <figcaption>From paper to public: I translated the research into an animated story and a searchable database that anyone can explore, no academic background needed.</figcaption>
   </figure>
   <p class="cite">Cite the website: Michelle L. Ding, <strong>Haya Bugshan</strong>, and Maja Mishevska. “NCII-ECOSYSTEM.ORG.” 2026. <a href="https://ncii-ecosystem.org">https://ncii-ecosystem.org</a></p>
+  </article>
+  </section>
 
+  <section class="pane" data-pane="projects" aria-labelledby="projects">
   <h2 id="projects">Other fun projects!</h2>
   <ul class="plain">
     <li>I write a Substack, <a href="https://hayabugshan.substack.com/">Tarjama</a> (<span lang="ar" dir="rtl">ترجمة</span>, “translation”), translating artificial intelligence, neuroscience, 3arabisms, womanhood, and the occasional laugh.</li>
     <li>I’m Vice President of the AI Robotics Ethics Society at Brown, where I lead recruitment, coordinate our initiative teams, and bring in speakers and partners working across AI, robotics and ethics.</li>
     <li>I build things outside the lab too, from vision-language model experiments to data storytelling. Check out my <a href="https://github.com/hayafaisalbugshan">GitHub</a>.</li>
   </ul>
+  </section>
 
-
+  <section class="pane" data-pane="contact" aria-labelledby="contact">
   <h2 id="contact">Contact</h2>
   <p class="contact">haya_bugshan [at] brown [dot] edu</p>
   <p><a href="https://github.com/hayafaisalbugshan">GitHub</a>&nbsp;&nbsp; <a href="https://www.linkedin.com/in/hayabugshan">LinkedIn</a>&nbsp;&nbsp; <a href="https://hayabugshan.substack.com/">Substack</a>&nbsp;&nbsp; <a href="resume.pdf">CV</a></p>
+  </section>
 
+  <div class="pane" data-pane="top">
   <section class="side-stickers main-stickers" aria-labelledby="bros-h2">
     <h2 id="bros-h2" class="side-h">More Like Haya Bugshan</h2>
     <div class="stickers">
@@ -636,7 +680,9 @@
       </figure>
     </div>
   </section>
+  </div>
 
+  <p class="filter-note" id="filterNote" hidden>Showing only one section. <a href="#top" data-for="top">Show the whole page</a></p>
 </main>
 
 
@@ -651,15 +697,25 @@
   const links = [...document.querySelectorAll('.toc a')];
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('lit'); }), { rootMargin: '0px 0px -15% 0px' });
   heads.forEach(h => io.observe(h));
-  const marks = ['top', ...heads.map(h => h.id)].map(id => document.getElementById(id));
-  const setActive = () => {
-    let cur = 'top';
-    for (const el of marks) if (el && el.getBoundingClientRect().top < innerHeight * 0.35) cur = el.id;
-    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) cur = marks[marks.length - 1].id;
-    links.forEach(a => { const on = a.dataset.for === cur; a.classList.toggle('on', on); on ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current'); });
+  const panes = [...document.querySelectorAll('main .pane')];
+  const note = document.getElementById('filterNote'), status = document.getElementById('filterStatus');
+  const names = { top: 'the whole page', research: 'Research', projects: 'Projects', contact: 'Contact' };
+  const setActive = () => {};
+  const filter = (which, focus) => {
+    if (!names[which]) which = 'top';
+    const all = which === 'top';
+    panes.forEach(p => { p.hidden = !all && p.dataset.pane !== which; });
+    note.hidden = all; root.classList.toggle('filtered', !all);
+    links.forEach(a => { const on = a.dataset.for === which; a.classList.toggle('on', on); on ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'); });
+    status.textContent = all ? 'Showing the whole page' : 'Showing only ' + names[which];
+    if (focus) { scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); document.getElementById('top').focus({ preventScroll: true }); }
   };
+  [...links, ...document.querySelectorAll('.filter-note a')].forEach(a => a.addEventListener('click', e => {
+    e.preventDefault(); const w = a.dataset.for; history.replaceState(null, '', w === 'top' ? location.pathname : '#' + w); filter(w, true); }));
+  filter((location.hash || '#top').slice(1), false);
+  addEventListener('hashchange', () => filter((location.hash || '#top').slice(1), true));
 
-  if (reduce) { setActive(); addEventListener('scroll', setActive, { passive: true }); return; }
+  if (reduce) return;
 
   /* ----- photo frame that changes shape as you scroll ----- */
   const N = 72;
@@ -700,8 +756,7 @@
 
   const frame = () => {
     const max = document.documentElement.scrollHeight - innerHeight;
-    drawShape(max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0);
-    setActive();
+    drawShape(root.classList.contains('no-anim') || max <= 0 ? 0 : Math.min(1, Math.max(0, scrollY / max)));
     requestAnimationFrame(frame);
   };
   requestAnimationFrame(frame);
@@ -713,14 +768,19 @@
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const NS = 'http://www.w3.org/2000/svg';
   const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent && parent.appendChild(e); return e; };
-  let paused = false; const loops = [];
+  const root = document.documentElement; const loops = [];
+  const off = () => root.classList.contains('no-anim');
   const whenVisible = (node, start, stop) => { const L = { start, stop, vis: false }; loops.push(L);
-    new IntersectionObserver(es => es.forEach(e => { L.vis = e.isIntersecting; if (L.vis && !paused) start(); else stop(); }), { threshold: .3 }).observe(node); };
+    new IntersectionObserver(es => es.forEach(e => { L.vis = e.isIntersecting; if (L.vis && !off()) start(); else stop(); }), { threshold: .3 }).observe(node); };
   const pb = document.getElementById('pauseBtn');
   if (pb) {
-    if (reduce) pb.hidden = true;
-    pb.addEventListener('click', () => { paused = !paused; pb.setAttribute('aria-pressed', paused); document.getElementById('pauseTxt').textContent = paused ? 'Play animations' : 'Pause animations'; pb.querySelector('path').setAttribute('d', paused ? 'M8 5v14l11-7z' : 'M7 5h3.5v14H7zM13.5 5H17v14h-3.5z');
-      loops.forEach(L => paused ? L.stop() : (L.vis && L.start())); });
+    const txt = document.getElementById('pauseTxt'), icon = document.getElementById('pauseIcon');
+    const paint = () => { const o = off(); pb.setAttribute('aria-pressed', o); txt.textContent = o ? 'Show animations' : 'Remove animations';
+      icon.setAttribute('d', o ? 'M8 5v14l11-7z' : 'M5 5l14 14M19 5L5 19'); };
+    pb.addEventListener('click', () => { root.classList.toggle('no-anim'); const o = off();
+      try { localStorage.setItem('anim', o ? 'off' : 'on'); } catch (e) {}
+      loops.forEach(L => o ? L.stop() : (L.vis && L.start())); paint(); });
+    paint();
   }
 
   /* ---------- PupilFM: causal prediction, then probing ---------- */
