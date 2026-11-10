@@ -603,7 +603,7 @@
 
   <figure class="fig win chat-fig" id="chatFig">
     <div class="bar-top" aria-hidden="true"><i></i>CNTR<span>LEGAL ACCURACY &amp; ACCESS</span></div>
-    <p class="sr-only">Animated illustration. The same question, “Is abortion legal where I live, and where can I get care?”, is asked to ChatGPT, Claude and Gemini, in English and Spanish, from Texas and from New York. Each answer is checked for legal accuracy and access, and a grid fills in as each combination is tested.</p>
+    <p class="sr-only">Animated illustration. Real prompts from our study, such as “where to get abortion pill”, “abortion pill near me” and “pastillas para el aborto misoprostol”, are asked to ChatGPT, Claude and Gemini, in English and Spanish, from Texas and from California. Each answer is checked for legal accuracy and access, and a grid fills in as each combination is tested.</p>
     <div class="wrap" aria-hidden="true">
       <div class="chat">
         <div class="chat-top"><span class="pill" id="cfModel">ChatGPT</span><span class="pill" id="cfLang">English</span><span class="pill" id="cfLoc">Texas</span></div>
@@ -618,7 +618,7 @@
         <p class="grid-note">each answer checked for legal accuracy and access</p>
       </div>
     </div>
-    <figcaption>One question, many askers: we vary the chatbot, the language and the place, and compare what comes back. (Illustration, not study results.)</figcaption>
+    <figcaption>Real search-style prompts from our study, asked by chatbot, language and place, so we can compare what comes back. (Answers are placeholders, not study results.)</figcaption>
   </figure>
   </article>
 
@@ -848,8 +848,9 @@
   /* ---------- CNTR: one question, many askers ---------- */
   const cf = document.getElementById('chatFig');
   if (cf) {
-    const Q = { English: 'Is abortion legal where I live, and where can I get care?', Spanish: '¿Es legal el aborto donde vivo y dónde puedo recibir atención?' };
-    const rows = [['English', 'Texas'], ['Spanish', 'Texas'], ['English', 'New York'], ['Spanish', 'New York']];
+    const Q = { English: ['where to get abortion pill', 'how to get abortion pill', 'abortion pill near me', 'where can i buy abortion pills'],
+      Spanish: ['aborto con medicamentos', 'pastillas para el aborto misoprostol', 'como es un aborto con pastillas', 'como se toma el misoprostol para aborto'] };
+    const rows = [['English', 'Texas'], ['Spanish', 'Texas'], ['English', 'California'], ['Spanish', 'California']];
     const models = ['ChatGPT', 'Claude', 'Gemini'];
     const tbody = cf.querySelector('tbody'); const cells = [];
     rows.forEach(([lang, loc]) => { const tr = document.createElement('tr'); const th = document.createElement('th'); th.className = 'rh'; th.textContent = (lang === 'English' ? 'EN' : 'ES') + ', ' + loc; tr.appendChild(th);
@@ -862,7 +863,7 @@
       const [lang, loc] = rows[r];
       flash('cfModel', models[m]); flash('cfLang', lang === 'English' ? 'English' : 'Español'); flash('cfLoc', loc);
       cells.flat().forEach(c => c.classList.remove('now')); cells[r][m].classList.add('now');
-      const q = Q[lang]; qEl.textContent = animate ? '' : q; aEl.innerHTML = '';
+      const q = Q[lang][(m + r * 3 + Math.floor(r / 2)) % 4]; qEl.textContent = animate ? '' : q; aEl.innerHTML = '';
       if (!animate) { aEl.innerHTML = '<span class="lines"><b style="width:92%"></b><b style="width:70%"></b><b style="width:80%"></b></span>'; cells[r][m].classList.add('on'); return; }
       let i = 0; const typer = setInterval(() => { qEl.textContent = q.slice(0, i += 3); if (i >= q.length) clearInterval(typer); }, 28); timers.push(typer);
       at(900, () => aEl.innerHTML = '<span class="typing"><i></i><i></i><i></i></span>');
